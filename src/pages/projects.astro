@@ -1,0 +1,70 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { ExternalLink, Github } from 'lucide-react';
+
+const projects = [
+  {
+    title: 'UNLEFT OS',
+    category: 'System Design',
+    description: 'A futuristic terminal-inspired dashboard for high-frequency data management.',
+    tech: ['React', 'TypeScript', 'Tailwind'],
+    status: 'In Development'
+  },
+  {
+    title: 'Cosmic Voyager',
+    category: 'Game',
+    description: 'A cross-platform space exploration game built with Unity and C#.',
+    tech: ['Unity', 'C#', 'Post Processing'],
+    status: 'Refinement'
+  },
+  {
+    title: 'Nexus CMS',
+    category: 'SaaS',
+    description: 'Blazing fast content delivery API for decentralized applications.',
+    tech: ['Node.js', 'MongoDB', 'AWS'],
+    status: 'Live'
+  }
+];
+---
+
+<PageLayout title="Projects">
+  <section class="max-w-7xl mx-auto px-6 py-24">
+    <div class="mb-16 text-center">
+      <h1 class="text-4xl md:text-6xl font-bold text-text-primary mb-6">Our Portfolio</h1>
+      <p class="text-lg text-text-secondary max-w-2xl mx-auto">
+        A glimpse into the digital systems and creative experiments we've engineered.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {projects.map((project) => (
+        <Card className="border-[#2D2D44] bg-[#1A1A2E]/50 overflow-hidden flex flex-col transition-all hover:border-accent-glow/50">
+          <div class="aspect-video bg-[#0A0A0F] flex items-center justify-center border-b border-[#2D2D44]">
+            <span class="text-accent-glow/30 font-mono text-xs uppercase tracking-[0.2em]">{project.title} Preview</span>
+          </div>
+          <CardHeader>
+            <div class="flex justify-between items-start mb-2">
+              <Badge variant="secondary" className="bg-accent-primary/10 text-accent-glow border-none px-2">{project.category}</Badge>
+              <Badge variant="outline" className="text-[10px] uppercase tracking-wider border-emerald-500/30 text-emerald-400">{project.status}</Badge>
+            </div>
+            <CardTitle class="text-text-primary">{project.title}</CardTitle>
+            <CardDescription class="text-text-secondary">{project.description}</CardDescription>
+          </CardHeader>
+          <CardContent class="mt-auto pt-4 flex items-center justify-between border-t border-[#2D2D44]">
+            <div class="flex gap-2">
+              <Github class="h-4 w-4 text-text-secondary hover:text-text-primary cursor-pointer transition-colors" />
+              <ExternalLink class="h-4 w-4 text-text-secondary hover:text-text-primary cursor-pointer transition-colors" />
+            </div>
+            <div class="flex gap-1">
+              {project.tech.slice(0, 2).map(t => (
+                <span class="text-[10px] font-mono text-text-secondary bg-[#0A0A0F] px-1.5 py-0.5 rounded border border-[#2D2D44]">{t}</span>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  </section>
+</PageLayout>

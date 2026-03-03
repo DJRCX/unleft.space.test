@@ -1,0 +1,63 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Github, Linkedin } from 'lucide-react';
+
+const team = [
+  {
+    name: 'Mahtab Hossain',
+    role: 'Founder & Lead Engineer',
+    bio: 'Full-stack architect with a passion for high-performance systems and game development.',
+    github: '#',
+    linkedin: '#',
+  },
+  {
+    name: 'Open Position',
+    role: 'Frontend Developer',
+    bio: 'We are looking for a frontend specialist obsessed with UI performance and design.',
+    github: null,
+    linkedin: null,
+  },
+  {
+    name: 'Open Position',
+    role: 'Game Developer',
+    bio: 'Unity specialist with cross-platform experience. Join us to build immersive worlds.',
+    github: null,
+    linkedin: null,
+  },
+];
+---
+
+<PageLayout title="Team" description="Meet the humans behind UNLEFT.">
+  <section class="max-w-7xl mx-auto px-6 py-24">
+    <div class="text-center mb-16">
+      <h1 class="text-4xl md:text-6xl font-bold text-text-primary mb-6">Our Team</h1>
+      <p class="text-lg text-text-secondary max-w-2xl mx-auto">
+        A lean, hungry team of engineers and creators building the future of digital.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      {team.map((member) => (
+        <Card className="border-[#2D2D44] bg-[#1A1A2E]/50 text-center overflow-hidden group hover:border-accent-glow/30 transition-all">
+          <CardHeader class="pb-4">
+            <div class="mx-auto mb-4 h-24 w-24 rounded-full bg-gradient-to-br from-accent-primary/30 to-accent-secondary/30 border-2 border-[#2D2D44] flex items-center justify-center group-hover:border-accent-glow/50 transition-colors">
+              <span class="text-3xl font-bold text-accent-glow/60">{member.name[0]}</span>
+            </div>
+            <CardTitle class="text-text-primary text-xl">{member.name}</CardTitle>
+            <p class="text-sm font-mono text-accent-glow">{member.role}</p>
+          </CardHeader>
+          <CardContent>
+            <p class="text-sm text-text-secondary mb-6 leading-relaxed">{member.bio}</p>
+            {member.github && (
+              <div class="flex justify-center gap-4">
+                <a href={member.github} class="text-text-secondary hover:text-accent-glow transition-colors"><Github class="h-5 w-5" /></a>
+                <a href={member.linkedin} class="text-text-secondary hover:text-accent-glow transition-colors"><Linkedin class="h-5 w-5" /></a>
+              </div>
+            )}
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  </section>
+</PageLayout>

@@ -1,0 +1,181 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* UNLEFT Custom Theme Tokens */
+  --color-background-primary: #0a0a0f;
+  --color-background-secondary: #1a1a2e;
+  --color-accent-primary: #7c3aed;
+  --color-accent-secondary: #9333ea;
+  --color-accent-glow: #c084fc;
+  --color-accent-highlight: #b185db;
+  --color-text-primary: #e5e7eb;
+  --color-text-secondary: #9ca3af;
+  --color-border-subtle: #2d2d44;
+
+  --font-heading: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --animate-glow: glow 2s ease-in-out infinite alternate;
+  --animate-fade-in: fadeIn 0.5s ease-in-out;
+
+  @keyframes glow {
+    0%,
+    100% {
+      opacity: 0.8;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
+
+:root {
+  --radius: 0.5rem;
+  --background: #0a0a0f;
+  --foreground: #e5e7eb;
+  --card: #1a1a2e;
+  --card-foreground: #e5e7eb;
+  --popover: #1a1a2e;
+  --popover-foreground: #e5e7eb;
+  --primary: #7c3aed;
+  --primary-foreground: #e5e7eb;
+  --secondary: #9333ea;
+  --secondary-foreground: #e5e7eb;
+  --muted: #1a1a2e;
+  --muted-foreground: #9ca3af;
+  --accent: #7c3aed;
+  --accent-foreground: #e5e7eb;
+  --destructive: #ef4444;
+  --border: #2d2d44;
+  --input: #2d2d44;
+  --ring: #c084fc;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-body;
+    background-image:
+      radial-gradient(circle at 50% -20%, #7c3aed33, transparent 40%),
+      radial-gradient(circle at 100% 100%, #1a1a2e, #0a0a0f);
+    background-attachment: fixed;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading font-semibold tracking-tight;
+  }
+  /* Consistent focus outline */
+  :focus-visible {
+    outline: 2px solid #c084fc;
+    outline-offset: 2px;
+  }
+  /* Thin scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0a0a0f;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #2d2d44;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #7c3aed;
+  }
+  /* Selection colour */
+  ::selection {
+    background: #7c3aed55;
+    color: #e5e7eb;
+  }
+}
+
+/* Utility keyframes */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+@keyframes pulse-slow {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+.animate-pulse-slow {
+  animation: pulse-slow 4s ease-in-out infinite;
+}
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, #c084fc33, transparent);
+  background-size: 200% auto;
+  animation: shimmer 2.5s linear infinite;
+}

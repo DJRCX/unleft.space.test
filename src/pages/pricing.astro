@@ -1,0 +1,93 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Check, ArrowRight } from 'lucide-react';
+
+const tiers = [
+  {
+    name: 'Starter',
+    price: '$499',
+    description: 'Perfect for small businesses needing a professional web presence.',
+    features: ['Up to 5 pages', 'Responsive design', 'Basic SEO optimization', 'Contact form', '1 month support'],
+    cta: 'Get Started',
+    highlighted: false,
+  },
+  {
+    name: 'Growth',
+    price: '$1,499',
+    description: 'For SMEs needing advanced features and performance optimization.',
+    features: ['Up to 15 pages', 'Custom design system', 'CMS integration', 'Performance optimization', 'Analytics setup', '3 months support'],
+    cta: 'Most Popular',
+    highlighted: true,
+  },
+  {
+    name: 'Enterprise',
+    price: '$5,000+',
+    description: 'Full-scale custom systems with scalable backend and DevOps.',
+    features: ['Unlimited pages', 'Custom backend', 'Database design', 'CI/CD pipeline', 'Security audit', '6 months support'],
+    cta: 'Contact Us',
+    highlighted: false,
+  },
+];
+---
+
+<PageLayout title="Pricing" description="Transparent pricing for every scale of business.">
+  <section class="max-w-7xl mx-auto px-6 py-24">
+    <div class="text-center mb-16">
+      <h1 class="text-4xl md:text-6xl font-bold text-text-primary mb-6">Simple, Honest Pricing</h1>
+      <p class="text-lg text-text-secondary max-w-2xl mx-auto">
+        Choose a plan that fits your goals. Custom software and game projects are quoted individually.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8 items-stretch">
+      {tiers.map((tier) => (
+        <Card className={`border-[#2D2D44] bg-[#1A1A2E]/50 flex flex-col relative overflow-hidden transition-all ${tier.highlighted ? 'border-accent-primary shadow-[0_0_30px_rgba(124,58,237,0.15)] scale-[1.02]' : 'hover:border-accent-glow/30'}`}>
+          {tier.highlighted && (
+            <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#7B2CBF] to-[#9D4EDD]"></div>
+          )}
+          <CardHeader class="pb-2">
+            {tier.highlighted && <Badge className="w-fit mb-2 bg-accent-primary/20 text-accent-glow border-none">Most Popular</Badge>}
+            <CardTitle class="text-2xl text-text-primary">{tier.name}</CardTitle>
+            <CardDescription class="text-text-secondary">{tier.description}</CardDescription>
+          </CardHeader>
+          <CardContent class="flex flex-col flex-1">
+            <div class="mb-8">
+              <span class="text-4xl font-bold text-text-primary">{tier.price}</span>
+              {tier.price !== '$5,000+' && <span class="text-text-secondary ml-1">/ project</span>}
+            </div>
+            <ul class="space-y-3 mb-8 flex-1">
+              {tier.features.map((feature) => (
+                <li class="flex items-center gap-3 text-sm text-text-secondary">
+                  <Check class="h-4 w-4 text-emerald-400 flex-shrink-0" />
+                  {feature}
+                </li>
+              ))}
+            </ul>
+            <Button
+              size="lg"
+              className={`w-full h-12 font-semibold transition-all ${
+                tier.highlighted
+                  ? 'border-none bg-gradient-to-r from-[#7B2CBF] to-[#9D4EDD] text-white shadow-[0_0_15px_rgba(124,58,237,0.3)] hover:shadow-[0_0_25px_rgba(124,58,237,0.5)]'
+                  : 'border-accent-glow/20 bg-transparent text-text-primary hover:bg-[#1A1A2E]'
+              }`}
+              variant={tier.highlighted ? 'default' : 'outline'}
+            >
+              {tier.cta}
+              <ArrowRight class="ml-2 h-4 w-4" />
+            </Button>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+
+    <div class="mt-16 text-center">
+      <p class="text-text-secondary mb-4">Need a custom quote for game development or AI systems?</p>
+      <a href="/contact" class="text-accent-glow hover:underline font-medium inline-flex items-center gap-2">
+        Request a Custom Quote <ArrowRight class="h-4 w-4" />
+      </a>
+    </div>
+  </section>
+</PageLayout>

@@ -1,0 +1,119 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+import CTASection from '@/components/sections/CTASection.astro';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Monitor, Gamepad2, Code2, Cpu, Smartphone, ArrowRight } from 'lucide-react';
+
+const services = [
+  {
+    icon: Monitor,
+    title: 'Business Websites',
+    priority: 'Primary',
+    description: 'Lightning-fast, SEO-optimized websites built with Astro, React, and Next.js. From landing pages to full ecommerce.',
+    tech: ['Astro', 'React', 'Next.js', 'Tailwind CSS'],
+    process: ['Discovery & Research', 'UI/UX Design', 'Development', 'Testing & Launch'],
+    color: 'text-blue-400',
+    borderColor: 'hover:border-blue-500/30',
+  },
+  {
+    icon: Gamepad2,
+    title: 'Game Development',
+    priority: 'Secondary',
+    description: 'Cross-platform immersive experiences powered by Unity. From casual mobile games to complex multiplayer systems.',
+    tech: ['Unity', 'C#', 'Photon', 'Post Processing'],
+    process: ['Concept & Prototyping', 'Core Mechanics', 'Art & Polish', 'Testing & Release'],
+    color: 'text-purple-400',
+    borderColor: 'hover:border-purple-500/30',
+  },
+  {
+    icon: Code2,
+    title: 'Custom Software',
+    priority: 'Tertiary',
+    description: 'Scalable backend systems, APIs, microservices, and internal tools tailored to your exact business logic.',
+    tech: ['Node.js', 'Python', 'Django', 'PostgreSQL', 'Docker'],
+    process: ['Requirements', 'Architecture', 'Development', 'Deployment'],
+    color: 'text-emerald-400',
+    borderColor: 'hover:border-emerald-500/30',
+  },
+  {
+    icon: Cpu,
+    title: 'AI-Based Systems',
+    priority: 'Emerging',
+    description: 'Intelligent automation, ML pipelines, and AI-powered features integrated directly into your products.',
+    tech: ['Python', 'TensorFlow', 'OpenAI API', 'LangChain'],
+    process: ['Data Analysis', 'Model Selection', 'Integration', 'Monitoring'],
+    color: 'text-orange-400',
+    borderColor: 'hover:border-orange-500/30',
+  },
+  {
+    icon: Smartphone,
+    title: 'Mobile Applications',
+    priority: 'Phase 2',
+    description: 'Cross-platform mobile apps with React Native for consistent experiences on iOS and Android.',
+    tech: ['React Native', 'Expo', 'Firebase'],
+    process: ['Planning', 'Design', 'Development', 'App Store Launch'],
+    color: 'text-cyan-400',
+    borderColor: 'hover:border-cyan-500/30',
+  },
+];
+---
+
+<PageLayout title="Services" description="From websites to games — explore the full range of UNLEFT's capabilities.">
+  <section class="bg-gradient-to-b from-transparent to-[#1A1A2E]/20 py-24">
+    <div class="mx-auto max-w-4xl px-6 text-center">
+      <h1 class="mb-6 text-4xl font-bold text-text-primary md:text-6xl">Our Expertise</h1>
+      <p class="text-lg text-text-secondary max-w-2xl mx-auto">
+        End-to-end technical execution. We build what others can't — from business websites to game studios.
+      </p>
+    </div>
+  </section>
+
+  <section class="max-w-7xl mx-auto px-6 py-12">
+    <div class="space-y-8">
+      {services.map((service, i) => (
+        <Card className={`border-[#2D2D44] bg-[#1A1A2E]/50 overflow-hidden transition-all ${service.borderColor} group`}>
+          <div class="grid md:grid-cols-3 gap-0">
+            <CardHeader class="md:col-span-1 border-b md:border-b-0 md:border-r border-[#2D2D44] flex flex-col justify-center p-8">
+              <div class={`mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-[#0A0A0F] border border-[#2D2D44] group-hover:border-accent-glow/20 transition-colors`}>
+                <service.icon class={`h-7 w-7 ${service.color}`} />
+              </div>
+              <div class="flex items-center gap-2 mb-2">
+                <CardTitle class="text-xl text-text-primary">{service.title}</CardTitle>
+              </div>
+              <Badge variant="outline" className="w-fit text-xs border-[#2D2D44] text-text-secondary">{service.priority}</Badge>
+            </CardHeader>
+            
+            <CardContent class="md:col-span-2 p-8 flex flex-col justify-center">
+              <CardDescription class="text-text-secondary leading-relaxed mb-6">{service.description}</CardDescription>
+              
+              <div class="grid sm:grid-cols-2 gap-6">
+                <div>
+                  <p class="text-xs font-mono uppercase tracking-wider text-text-secondary mb-3">Technologies</p>
+                  <div class="flex flex-wrap gap-2">
+                    {service.tech.map(t => (
+                      <span class="text-xs font-mono text-text-secondary bg-[#0A0A0F] px-2 py-1 rounded border border-[#2D2D44]">{t}</span>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <p class="text-xs font-mono uppercase tracking-wider text-text-secondary mb-3">Process</p>
+                  <ol class="space-y-1">
+                    {service.process.map((step, j) => (
+                      <li class="text-xs text-text-secondary flex items-center gap-2">
+                        <span class={`h-1.5 w-1.5 rounded-full ${service.color.replace('text-', 'bg-')}`}></span>
+                        {step}
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              </div>
+            </CardContent>
+          </div>
+        </Card>
+      ))}
+    </div>
+  </section>
+
+  <CTASection />
+</PageLayout>

@@ -1,0 +1,49 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+import { Card, CardContent } from '@/components/ui/card';
+import { Quote } from 'lucide-react';
+
+const testimonials = [
+  {
+    name: 'Arif Rahman',
+    company: 'TechStartup BD',
+    quote: 'UNLEFT delivered our MVP in record time. Their performance-first approach gave us a competitive edge from day one.',
+  },
+  {
+    name: 'Sara Khan',
+    company: 'DesignCo',
+    quote: 'The website they built for us loads incredibly fast and looks stunning. Our conversion rate jumped 40% after launch.',
+  },
+  {
+    name: 'Coming Soon',
+    company: 'Your Company',
+    quote: 'We are collecting feedback from our early partners. Your testimonial could be here.',
+  },
+];
+---
+
+<PageLayout title="Testimonials" description="What our partners say about working with UNLEFT.">
+  <section class="max-w-7xl mx-auto px-6 py-24">
+    <div class="text-center mb-16">
+      <h1 class="text-4xl md:text-6xl font-bold text-text-primary mb-6">Trusted Partners</h1>
+      <p class="text-lg text-text-secondary max-w-2xl mx-auto">
+        Early reviews and feedback from the clients and partners who help us grow.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      {testimonials.map((item) => (
+        <Card className="border-[#2D2D44] bg-[#1A1A2E]/50 hover:border-accent-glow/30 transition-all flex flex-col">
+          <CardContent class="pt-8 flex flex-col flex-1">
+            <Quote class="h-8 w-8 text-accent-primary/30 mb-4" />
+            <p class="text-text-secondary leading-relaxed flex-1 italic">"{item.quote}"</p>
+            <div class="mt-8 pt-4 border-t border-[#2D2D44]">
+              <p class="font-bold text-text-primary">{item.name}</p>
+              <p class="text-sm text-accent-glow">{item.company}</p>
+            </div>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  </section>
+</PageLayout>
