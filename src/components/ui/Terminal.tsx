@@ -6,7 +6,7 @@ import { Terminal as TerminalIcon } from "lucide-react";
 export default function Terminal() {
   const [input, setInput] = useState("");
   const [history, setHistory] = useState([
-    { type: "system", content: "UNLEFT OS v2.0.0" },
+    { type: "system", content: "Unleft OS v2.0.0" },
     { type: "system", content: 'Type "help" to see available commands.' },
   ]);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -35,7 +35,7 @@ export default function Terminal() {
       case "about":
         newHistory.push({
           type: "system",
-          content: "UNLEFT LLC: Beyond Software. Engineering the Future.",
+          content: "Unleft: Beyond Software. Engineering the Future.",
         });
         break;
       case "services":
@@ -47,7 +47,7 @@ export default function Terminal() {
       case "contact":
         newHistory.push({
           type: "system",
-          content: "Redirecting to contact page... (hello@unleft.space)",
+          content: "Redirecting to contact page... (hello@Unleft.space)",
         });
         break;
       case "clear":
@@ -74,7 +74,7 @@ export default function Terminal() {
         <div className="flex items-center gap-2">
           <TerminalIcon className="h-4 w-4 text-accent-glow" />
           <span className="text-xs font-mono text-text-secondary">
-            unleft@terminal: ~
+            Unleft@terminal: ~
           </span>
         </div>
         <div className="flex gap-2">

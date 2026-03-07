@@ -17,10 +17,10 @@ const {
   image = '/og-image.png',
 } = Astro.props;
 
-const siteBase = Astro.site ?? new URL('https://unleft.space');
+const siteBase = Astro.site ?? new URL('https://Unleft');
 const canonicalURL = new URL(Astro.url.pathname, siteBase);
 const ogImageURL = new URL(image, siteBase);
-const fullTitle = `${title} | UNLEFT`;
+const fullTitle = `${title} | Unleft`;
 ---
 
 <!doctype html>
@@ -45,7 +45,7 @@ const fullTitle = `${title} | UNLEFT`;
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImageURL} />
-    <meta property="og:site_name" content="UNLEFT" />
+    <meta property="og:site_name" content="Unleft" />
     <meta property="og:locale" content="en_US" />
 
     <!-- Twitter Card -->
@@ -59,7 +59,7 @@ const fullTitle = `${title} | UNLEFT`;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Libre+Barcode+39+Extended+Text&family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Libre+Barcode+39+Extended+Text&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap"
       rel="stylesheet"
     />
 
@@ -69,7 +69,7 @@ const fullTitle = `${title} | UNLEFT`;
   <body>
     <!-- FOUC prevention: Immediately cover screen if no session storage flag -->
     <script>
-      if (!sessionStorage.getItem("unleft-splash-seen")) {
+      if (!sessionStorage.getItem("Unleft-splash-seen")) {
         document.write('<div id="splash-blocker" style="position:fixed;inset:0;background-color:hsl(var(--background));z-index:99;"></div>');
         window.addEventListener('load', () => {
           const blocker = document.getElementById('splash-blocker');

@@ -48,6 +48,8 @@ interface FlickeringGridProps extends React.HTMLAttributes<HTMLDivElement> {
   text?: string;
   fontSize?: number;
   fontWeight?: number | string;
+  fontFamily?: string;
+  textOpacity?: number;
 }
 
 export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
@@ -62,6 +64,8 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
   text = "",
   fontSize = 140,
   fontWeight = 600,
+  fontFamily = '"Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+  textOpacity = 1,
   ...props
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -93,10 +97,18 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
         maskCtx.save();
         maskCtx.scale(dpr, dpr);
         maskCtx.fillStyle = "white";
-        maskCtx.font = `${fontWeight} ${fontSize}px "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`;
+        maskCtx.font = `${fontWeight} ${fontSize}px ${fontFamily}`;
         maskCtx.textAlign = "center";
         maskCtx.textBaseline = "middle";
-        maskCtx.fillText(text, w / (2 * dpr), h / (2 * dpr));
+
+        const lines = text.split("\n");
+        const lineHeight = fontSize * 1.1;
+        const totalHeight = (lines.length - 1) * lineHeight;
+        const startY = h / (2 * dpr) - totalHeight / 2;
+
+        lines.forEach((line, index) => {
+          maskCtx.fillText(line, w / (2 * dpr), startY + index * lineHeight);
+        });
         maskCtx.restore();
       }
 
@@ -114,7 +126,7 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
 
           const opacity = squares[i * rows + j];
           const finalOpacity = hasText
-            ? Math.min(1, opacity * 3 + 0.4)
+            ? Math.min(1, opacity * 3 + 0.4 * textOpacity)
             : opacity;
 
           ctx.fillStyle = colorWithOpacity(memoizedColor, finalOpacity);
@@ -122,7 +134,7 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
         }
       }
     },
-    [memoizedColor, squareSize, gridGap, text, fontSize, fontWeight],
+    [memoizedColor, squareSize, gridGap, text, fontSize, fontWeight, fontFamily, textOpacity],
   );
 
   const setupCanvas = useCallback(

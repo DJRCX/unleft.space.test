@@ -101,12 +101,12 @@ const HoverButton = React.forwardRef<HTMLButtonElement, HoverButtonProps>(
         className={cn(
           "relative isolate px-6 py-2.5 rounded-3xl",
           "text-foreground font-medium text-sm md:text-base leading-6",
-          "backdrop-blur-lg bg-primary/10", // Adapted for UNLEFT
+          "backdrop-blur-lg bg-primary/10", // Adapted for Unleft
           "cursor-pointer overflow-hidden",
           "before:content-[''] before:absolute before:inset-0",
           "before:rounded-[inherit] before:pointer-events-none",
           "before:z-[1]",
-          // Adapted shadow colors to UNLEFT Purple (192, 132, 252 or #c084fc instead of blue)
+          // Adapted shadow colors to Unleft Purple (192, 132, 252 or #c084fc instead of blue)
           "before:shadow-[inset_0_0_0_1px_rgba(192,132,252,0.2),inset_0_0_16px_0_rgba(192,132,252,0.1),inset_0_-3px_12px_0_rgba(192,132,252,0.15),0_1px_3px_0_rgba(0,0,0,0.50),0_4px_12px_0_rgba(0,0,0,0.45)]",
           "before:mix-blend-lighten before:transition-transform before:duration-300",
           "active:before:scale-[0.975] hover:bg-primary/20 transition-colors",
@@ -118,7 +118,7 @@ const HoverButton = React.forwardRef<HTMLButtonElement, HoverButtonProps>(
         {...props}
         style={
           {
-            // Custom CSS variables mapped to UNLEFT colors
+            // Custom CSS variables mapped to Unleft colors
             "--circle-start": "var(--tw-gradient-from, #7c3aed)",
             "--circle-end": "var(--tw-gradient-to, #c084fc)",
           } as React.CSSProperties

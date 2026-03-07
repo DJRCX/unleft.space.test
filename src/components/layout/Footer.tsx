@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import type { ComponentProps, ReactNode } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion, AnimatePresence } from "framer-motion";
 import { Github, Linkedin, Mail } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { FlickeringGrid } from "@/components/ui/FlickeringGrid";
@@ -47,19 +47,27 @@ const footerLinks: FooterSection[] = [
   {
     label: "Social",
     links: [
-      { title: "GitHub", href: "https://github.com/unleft", icon: Github },
+      { title: "GitHub", href: "https://github.com/Unleft", icon: Github },
       {
         title: "LinkedIn",
-        href: "https://linkedin.com/company/unleft",
+        href: "https://linkedin.com/company/Unleft",
         icon: Linkedin,
       },
-      { title: "Email", href: "mailto:hello@unleft.space", icon: Mail },
+      { title: "Email", href: "mailto:hello@Unleft.space", icon: Mail },
     ],
   },
 ];
 
 export default function Footer() {
   const year = new Date().getFullYear();
+  const [showTagline, setShowTagline] = React.useState(false);
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setShowTagline((prev) => !prev);
+    }, 6000); // 6 seconds interval
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <footer className="relative w-full border-t border-border/40 overflow-hidden pb-0">
@@ -72,14 +80,14 @@ export default function Footer() {
           <a
             href="/"
             className="group flex flex-col gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm w-fit"
-            aria-label="UNLEFT — home"
+            aria-label="Unleft — home"
           >
             <div className="flex items-center gap-2">
               <span
                 style={{ fontFamily: "'Bruno Ace SC', sans-serif" }}
                 className="text-xl font-normal tracking-widest text-[#E5E7EB] leading-none select-none transition-colors group-hover:text-primary"
               >
-                UNLEFT
+                Unleft
               </span>
               <span
                 className="size-1.5 rounded-full bg-primary flex-shrink-0 mb-0.5"
@@ -97,7 +105,7 @@ export default function Footer() {
           </p>
 
           <p className="text-muted-foreground/60 text-xs">
-            © {year} UNLEFT. All rights reserved. <br /> Dhaka, Bangladesh.
+            © {year} Unleft. All rights reserved. <br /> Dhaka, Bangladesh.
           </p>
         </AnimatedContainer>
 
@@ -139,16 +147,28 @@ export default function Footer() {
       <div className="w-full h-48 md:h-64 relative z-0">
         <div className="absolute inset-0 bg-gradient-to-t from-transparent to-background z-10 from-40%" />
         <div className="absolute inset-0 mx-6">
-          <FlickeringGrid
-            text="UNLEFT"
-            fontSize={90}
-            className="h-full w-full"
-            squareSize={2}
-            gridGap={3}
-            color="#6B7280"
-            maxOpacity={0.3}
-            flickerChance={0.1}
-          />
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={showTagline ? "tagline" : "logo"}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1, ease: "easeInOut" }}
+              className="h-full w-full"
+            >
+              <FlickeringGrid
+                text={showTagline ? "Engineering the Future,\nBeyond Software." : "UNLEFT.LLC"}
+                fontFamily={'"JetBrains Mono", monospace'}
+                fontSize={80}
+                className="h-full w-full"
+                squareSize={2}
+                gridGap={3}
+                color="#6B7280"
+                maxOpacity={0.3}
+                flickerChance={0.1}
+              />
+            </motion.div>
+          </AnimatePresence>
         </div>
       </div>
     </footer>

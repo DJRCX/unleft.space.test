@@ -32,7 +32,7 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  /* UNLEFT Custom Theme Tokens */
+  /* Unleft Custom Theme Tokens */
   --color-background-primary: #0a0a0f;
   --color-background-secondary: #1a1a2e;
   --color-accent-primary: #7c3aed;
@@ -43,7 +43,7 @@
   --color-text-secondary: #9ca3af;
   --color-border-subtle: #2d2d44;
 
-  --font-heading: "Space Grotesk", sans-serif;
+  --font-heading: "Bruno Ace SC", sans-serif;
   --font-body: "Inter", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
   --font-bruno: "Bruno Ace SC", sans-serif;

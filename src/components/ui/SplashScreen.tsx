@@ -18,7 +18,7 @@ export function SplashScreen() {
 
   useEffect(() => {
     // Check if splash has already been shown in this session
-    const hasSeenSplash = sessionStorage.getItem("unleft-splash-seen");
+    const hasSeenSplash = sessionStorage.getItem("Unleft-splash-seen");
     if (hasSeenSplash) {
       setIsVisible(false);
       return;
@@ -28,7 +28,7 @@ export function SplashScreen() {
     // The shader takes about ~3-4 seconds to expand fully outwards
     const timer = setTimeout(() => {
       setIsVisible(false);
-      sessionStorage.setItem("unleft-splash-seen", "true");
+      sessionStorage.setItem("Unleft-splash-seen", "true");
     }, 4000);
 
     if (!containerRef.current) return;
@@ -174,7 +174,7 @@ export function SplashScreen() {
             transition={{ delay: 0.5, duration: 1 }}
             className="absolute pointer-events-none z-10 text-center text-5xl md:text-7xl leading-none font-bold tracking-tighter whitespace-pre-wrap text-foreground drop-shadow-xl"
           >
-            UNLEFT
+            Unleft
           </motion.span>
         </motion.div>
       )}
