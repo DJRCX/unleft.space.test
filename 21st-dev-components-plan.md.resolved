@@ -1,0 +1,45 @@
+# 21st.dev Components — Installation Plan
+
+## Goal
+Safely integrate 15 components from the `unleft.comp` staging project into the main UNLEFT website. Components will be migrated **one by one** upon user request to ensure clean implementation and proper styling alignment.
+
+## Source & Staging
+- **Source**: `c:\Work\unleft.space\unleft.comp\` (Next.js project with installed components)
+- **Staging Area**: `src/components/21st/` (Contains pre-moved components and hooks for quick migration)
+- **Hooks**: `src/hooks/` (Contains shared utilities like `use-debounced-dimensions.tsx`)
+
+## Components (Status Tracker)
+
+| # | Component | Source Path | Status |
+|---|-----------|-------------|--------|
+| 1 | Not Found Page 2 | `21st/not-found-page-2.tsx` | ✅ Implemented (404.astro) |
+| 2 | Contact Card | `21st/contact-card.tsx` | ⏳ Staged |
+| 3 | Etheral Shadow | `21st/etheral-shadow.tsx` | ✅ Implemented (BaseLayout) |
+| 4 | Shader Animation | `21st/shader-animation.tsx` | ✅ Implemented (SplashScreen) |
+| 5 | Animated Gradient With SVG | `21st/animated-gradient-with-svg.tsx` | ⏳ Staged |
+| 6 | Spotlight Card | `21st/spotlight-card.tsx` | ⏳ Staged |
+| 7 | Pulse Beams | `21st/pulse-beams.tsx` | ⏳ Staged |
+| 8 | Logo Cloud 2 | `21st/logo-cloud-2.tsx` | ⏳ Staged |
+| 9 | Grid Feature Cards | `21st/grid-feature-cards.tsx` | ⏳ Staged |
+| 10 | Footer Section | `21st/footer-section.tsx` | ✅ Implemented (Footer) |
+| 11 | Flickering Footer | `21st/flickering-footer.tsx` | ⏳ Staged |
+| 12 | Wireframe Dotted Globe | `21st/wireframe-dotted-globe.tsx` | ⏳ Staged |
+| 13 | Expandable Tabs | `21st/expandable-tabs.tsx` | ✅ Implemented (Header) |
+| 14 | Flip Card | `21st/flip-card.tsx` | ⏳ Staged |
+| 15 | Cookie Banner | `21st/cookie-banner-1.tsx` | ✅ Implemented (PageLayout) |
+| 16 | Hover Button | `unleft.comp/components/ui/hover-button.tsx` | ✅ Implemented (CTA, Header) |
+
+## Execution Protocol (Sequential Pull)
+
+1. **User Request**: User specifies which component to implement.
+2. **Move & Align**:
+   - Move `.tsx` from `src/components/21st/` to final destination (e.g., `src/components/sections/` or `src/components/ui/`).
+   - Align imports (`@/lib/utils`, `@/components/ui/...`).
+3. **Internal Logic Check**: Verify if component needs specific Tailwind v4 theme extensions (animations/colors).
+4. **Integration**: Wire the component into the target page.
+5. **Validation**: Run `npm run dev` to verify visual correctness and interactivity.
+
+## Important Notes
+- **Dependencies**: Core deps (`three`, `d3`, `usehooks-ts`, `color-bits`) are already installed in the main project.
+- **UI Primitives**: Shared primitives like `avatar`, `input`, and `label` have been moved to `src/components/ui/` to avoid duplication.
+- **Staging**: `src/components/21st/` acts as a library/staging area until components are "pulled" for implementation.

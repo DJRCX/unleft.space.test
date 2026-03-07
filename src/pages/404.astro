@@ -1,0 +1,13 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { NotFoundPage } from '@/components/sections/not-found';
+---
+
+<BaseLayout 
+  title="Page Not Found" 
+  description="The page you are looking for does not exist."
+>
+  <main class="min-h-screen">
+    <NotFoundPage client:load />
+  </main>
+</BaseLayout>

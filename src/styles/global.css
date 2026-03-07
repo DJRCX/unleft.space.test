@@ -46,6 +46,8 @@
   --font-heading: "Space Grotesk", sans-serif;
   --font-body: "Inter", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
+  --font-bruno: "Bruno Ace SC", sans-serif;
+  --font-barcode: "Libre Barcode 39 Extended Text", system-ui;
 
   --animate-glow: glow 2s ease-in-out infinite alternate;
   --animate-fade-in: fadeIn 0.5s ease-in-out;
@@ -97,10 +99,6 @@
   }
   body {
     @apply bg-background text-foreground font-body;
-    background-image:
-      radial-gradient(circle at 50% -20%, #7c3aed33, transparent 40%),
-      radial-gradient(circle at 100% 100%, #1a1a2e, #0a0a0f);
-    background-attachment: fixed;
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

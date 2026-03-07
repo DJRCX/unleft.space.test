@@ -1,6 +1,9 @@
 ---
 import '@/styles/global.css';
+import { ViewTransitions } from 'astro:transitions';
 import CookieBanner from '@/components/layout/CookieBanner';
+import { EtheralShadow } from '@/components/ui/EtheralShadow';
+import { SplashScreen } from '@/components/ui/SplashScreen';
 
 interface Props {
   title: string;
@@ -56,12 +59,27 @@ const fullTitle = `${title} | UNLEFT`;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Libre+Barcode+39+Extended+Text&family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Astro View Transitions: persists header, background, and cookie banner across navigations -->
+    <ViewTransitions />
   </head>
   <body>
+    <!-- FOUC prevention: Immediately cover screen if no session storage flag -->
+    <script>
+      if (!sessionStorage.getItem("unleft-splash-seen")) {
+        document.write('<div id="splash-blocker" style="position:fixed;inset:0;background-color:hsl(var(--background));z-index:99;"></div>');
+        window.addEventListener('load', () => {
+          const blocker = document.getElementById('splash-blocker');
+          if (blocker) blocker.style.display = 'none';
+        });
+      }
+    </script>
+    <SplashScreen client:load transition:persist="splash" />
+    <EtheralShadow client:load transition:persist="etheral-shadow" />
     <slot />
-    <CookieBanner client:idle />
+    <CookieBanner client:idle transition:persist="cookie-banner" />
   </body>
 </html>

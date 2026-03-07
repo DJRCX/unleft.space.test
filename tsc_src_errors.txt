@@ -1,0 +1,14 @@
+﻿
+src/components/ui/expandable-tabs.tsx(7,10): error TS1484: 'LucideIcon' is a type and must be 
+imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/components/ui/expandable-tabs.tsx(62,21): error TS2345: Argument of type 'RefObject<null>' is 
+not assignable to parameter of type 'RefObject<HTMLElement> | RefObject<HTMLElement>[]'.
+src/components/ui/expandable-tabs.tsx(103,13): error TS2322: Type '{ delay: number; type: string; 
+bounce: number; duration: number; }' is not assignable to type 'Transition<any> | undefined'.
+src/components/ui/expandable-tabs.tsx(119,19): error TS2322: Type '{ delay: number; type: string; 
+bounce: number; duration: number; }' is not assignable to type 'Transition<any> | undefined'.
+unleft.comp/components/wireframe-dotted-globe.tsx(4,21): error TS7016: Could not find a declaration 
+file for module 'd3'. 'C:/Work/unleft.space/unleft.comp/node_modules/d3/src/index.js' implicitly has 
+an 'any' type.
+
+

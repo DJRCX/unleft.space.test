@@ -19,6 +19,7 @@ pnpm-debug.log*
 .agent
 docs/
 .vscode
+unleft.comp/
 
 # macOS-specific files
 .DS_Store

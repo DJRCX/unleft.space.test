@@ -1,22 +1,5 @@
 ---
-const differentiators = [
-  {
-    title: 'Startup Speed',
-    description: 'We move fast. Rapid prototyping and agile execution to get you to market quicker.'
-  },
-  {
-    title: 'Performance First',
-    description: 'Every site we build aims for >90 Lighthouse scores and sub-2s load times.'
-  },
-  {
-    title: 'Deep UX Focus',
-    description: 'Beautiful aesthetics combined with intuitive user journeys for maximum engagement.'
-  },
-  {
-    title: 'Future-Proof',
-    description: 'Scalable architecture that grows with your business, from MVP to Enterprise.'
-  }
-];
+import DifferentiatorsGrid from '@/components/sections/DifferentiatorsGrid';
 ---
 
 <section class="bg-[#1A1A2E]/30 py-24">
@@ -28,18 +11,11 @@ const differentiators = [
           We combine the creativity of a game studio with the precision of enterprise software engineering. 
           Our mission is to empower businesses with the technology of tomorrow.
         </p>
-        <div class="grid gap-6 sm:grid-cols-2">
-          {differentiators.map((item) => (
-            <div class="rounded-xl border border-[#2D2D44] bg-[#0A0A0F]/50 p-6 transition-all hover:bg-[#1A1A2E]">
-              <h3 class="mb-2 font-bold text-text-primary">{item.title}</h3>
-              <p class="text-sm text-text-secondary">{item.description}</p>
-            </div>
-          ))}
-        </div>
+        <DifferentiatorsGrid client:visible />
       </div>
       
       <div class="lg:w-1/2 flex justify-center">
-        <!-- Visual representation placeholder -->
+        <!-- Visual representation -->
         <div class="relative h-[300px] w-full max-w-md rounded-2xl border border-accent-glow/20 bg-[#0A0A0F] p-8 overflow-hidden shadow-[0_0_50px_rgba(124,58,237,0.1)]">
             <div class="flex items-center gap-2 mb-6">
                 <div class="h-3 w-3 rounded-full bg-red-500/50"></div>

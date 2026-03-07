@@ -13,9 +13,9 @@ const { title, description, image } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description} image={image}>
-  <Header client:load />
+  <Header client:load transition:persist="site-header" />
   <main class="pt-20 min-h-screen">
     <slot />
   </main>
-  <Footer />
+  <Footer client:visible />
 </BaseLayout>
