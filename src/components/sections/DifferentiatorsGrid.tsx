@@ -39,6 +39,7 @@ export default function DifferentiatorsGrid() {
         {differentiators.map((item, i) => (
           <motion.div
             key={item.title}
+            className="h-full flex flex-col"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
@@ -46,7 +47,7 @@ export default function DifferentiatorsGrid() {
           >
             <FeatureCard
               feature={item}
-              className="rounded-xl border border-[#2D2D44] bg-[#0A0A0F]/50 transition-all hover:bg-[#1A1A2E]"
+              className="h-full rounded-xl border border-[#2D2D44] bg-[#0A0A0F]/50 transition-all hover:bg-[#1A1A2E]"
             />
           </motion.div>
         ))}

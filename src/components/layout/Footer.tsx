@@ -82,17 +82,18 @@ export default function Footer() {
             className="group flex flex-col gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm w-fit"
             aria-label="Unleft — home"
           >
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
+              <img 
+                src="/logos/unleft_logo.png" 
+                alt="" 
+                className="h-6 w-auto brightness-110 contrast-125 saturate-0 invert" 
+              />
               <span
                 style={{ fontFamily: "'Bruno Ace SC', sans-serif" }}
-                className="text-xl font-normal tracking-widest text-[#E5E7EB] leading-none select-none transition-colors group-hover:text-primary"
+                className="text-lg font-normal tracking-widest text-[#E5E7EB] leading-none select-none transition-colors group-hover:text-primary"
               >
-                Unleft
+                UNLEFT.LLC
               </span>
-              <span
-                className="size-1.5 rounded-full bg-primary flex-shrink-0 mb-0.5"
-                aria-hidden="true"
-              />
             </div>
             <p className="text-sm font-medium text-muted-foreground transition-colors group-hover:text-foreground">
               Beyond Software.

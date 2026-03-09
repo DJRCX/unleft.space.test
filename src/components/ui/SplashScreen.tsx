@@ -168,14 +168,24 @@ export function SplashScreen() {
               overflow: "hidden",
             }}
           />
-          <motion.span
+          <motion.div
             initial={{ opacity: 0, y: 10, filter: "blur(4px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ delay: 0.5, duration: 1 }}
-            className="absolute pointer-events-none z-10 text-center text-5xl md:text-7xl leading-none font-bold tracking-tighter whitespace-pre-wrap text-foreground drop-shadow-xl"
+            className="relative z-10 flex flex-row items-center gap-6"
           >
-            Unleft
-          </motion.span>
+            <img 
+              src="/logos/unleft_logo.png" 
+              alt="" 
+              className="h-20 md:h-24 w-auto brightness-110 contrast-125 saturate-0 invert" 
+            />
+            <h1 
+              className="text-4xl md:text-7xl font-bold tracking-[0.1em] uppercase text-white whitespace-nowrap"
+              style={{ fontFamily: "'Bruno Ace SC', sans-serif" }}
+            >
+              UNLEFT.LLC
+            </h1>
+          </motion.div>
         </motion.div>
       )}
     </AnimatePresence>

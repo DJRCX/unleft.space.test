@@ -72,7 +72,7 @@ const GlowCard: React.FC<GlowCardProps> = ({
     const baseStyles = {
       "--base": base,
       "--spread": spread,
-      "--radius": "14",
+      "--radius": "16", // Matches rounded-2xl (1rem = 16px)
       "--border": "3",
       "--backdrop": "hsl(0 0% 60% / 0.12)",
       "--backup-border": "var(--backdrop)",
@@ -95,7 +95,7 @@ const GlowCard: React.FC<GlowCardProps> = ({
       border: "var(--border-size) solid var(--backup-border)",
       position: "relative" as const,
       touchAction: "none" as const,
-    };
+    } as React.CSSProperties & Record<string, any>;
 
     // Add width and height if provided
     if (width !== undefined) {
@@ -116,7 +116,7 @@ const GlowCard: React.FC<GlowCardProps> = ({
       position: absolute;
       inset: calc(var(--border-size) * -1);
       border: var(--border-size) solid transparent;
-      border-radius: calc(var(--radius) * 1px);
+      border-radius: calc((var(--radius) * 1px) + var(--border-size)); 
       background-attachment: fixed;
       background-size: calc(100% + (2 * var(--border-size))) calc(100% + (2 * var(--border-size)));
       background-repeat: no-repeat;
@@ -174,7 +174,7 @@ const GlowCard: React.FC<GlowCardProps> = ({
         className={`
           ${getSizeClasses()}
           ${!customSize ? "aspect-[3/4]" : ""}
-          rounded-2xl 
+          rounded-[16px]
           relative 
           grid 
           grid-rows-[1fr_auto] 

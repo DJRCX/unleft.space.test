@@ -1,0 +1,10 @@
+---
+import GlobeCanvas from '@/components/ui/wireframe-dotted-globe';
+---
+
+<!-- Globe as absolute-positioned background centered between hero bottom and services top -->
+<div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/3 z-0 pointer-events-none select-none" aria-hidden="true">
+  <div class="opacity-40">
+    <GlobeCanvas client:visible width={800} height={800} className="[&_canvas]:!bg-transparent [&>div:last-child]:hidden" />
+  </div>
+</div>

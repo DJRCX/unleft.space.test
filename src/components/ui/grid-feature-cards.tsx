@@ -12,7 +12,7 @@ type FeatureCardPorps = React.ComponentProps<'div'> & {
 };
 
 export function FeatureCard({ feature, className, ...props }: FeatureCardPorps) {
-	const p = genRandomPattern();
+	const p = genDeterministicPattern(feature.title);
 
 	return (
 		<div className={cn('relative overflow-hidden p-6', className)} {...props}>
@@ -64,10 +64,19 @@ function GridPattern({
 	);
 }
 
-function genRandomPattern(length?: number): number[][] {
-	length = length ?? 5;
-	return Array.from({ length }, () => [
-		Math.floor(Math.random() * 4) + 7, // random x between 7 and 10
-		Math.floor(Math.random() * 6) + 1, // random y between 1 and 6
+function getSeedFromString(str: string): number {
+	let hash = 0;
+	for (let i = 0; i < str.length; i++) {
+		hash = (hash << 5) - hash + str.charCodeAt(i);
+		hash |= 0;
+	}
+	return Math.abs(hash);
+}
+
+function genDeterministicPattern(seedStr: string, length = 5): number[][] {
+	const seed = getSeedFromString(seedStr);
+	return Array.from({ length }, (_, i) => [
+		((seed + i * 7) % 4) + 7, // deterministic x between 7 and 10
+		((seed + i * 11) % 6) + 1, // deterministic y between 1 and 6
 	]);
 }

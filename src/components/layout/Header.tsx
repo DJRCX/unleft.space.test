@@ -54,11 +54,16 @@ function UnleftLogo() {
       aria-label="Unleft — home"
       className="flex items-center gap-1.5 flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
     >
+      <img 
+        src="/logos/unleft_logo.png" 
+        alt="" 
+        className="h-6 w-auto brightness-110 contrast-125 saturate-0 invert" 
+      />
       <span
         style={{ fontFamily: "'Bruno Ace SC', sans-serif" }}
         className="text-sm font-normal tracking-widest text-foreground leading-none select-none"
       >
-        Unleft
+        UNLEFT.LLC
       </span>
       <span
         className="size-1.5 rounded-full bg-primary flex-shrink-0 mb-0.5"

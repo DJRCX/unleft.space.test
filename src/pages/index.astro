@@ -2,13 +2,24 @@
 import PageLayout from '@/layouts/PageLayout.astro';
 import HeroSection from '@/components/sections/HeroSection.astro';
 import WhatWeDo from '@/components/sections/WhatWeDo.astro';
-import WhyUnleft from '@/components/sections/WhyUnleft.astro';
 import CTASection from '@/components/sections/CTASection.astro';
+import ExpertiseSection from '@/components/sections/ExpertiseSection.astro';
+import GlobeWrapper from '@/components/sections/GlobeWrapper.astro';
 ---
 
 <PageLayout title="Home" description="Engineering the Future. We build scalable digital systems, high-performance websites, and cross-platform games.">
-  <HeroSection />
-  <WhatWeDo />
-  <WhyUnleft />
+  <!-- Hero + Globe + Core Services share a unified visual block -->
+  <div class="relative overflow-hidden">
+    <HeroSection />
+
+    <!-- Globe visually bridges the hero and core services -->
+    <GlobeWrapper />
+
+    <WhatWeDo />
+  </div>
+
+  <!-- Expertise section below Core Services -->
+  <ExpertiseSection />
+
   <CTASection />
 </PageLayout>

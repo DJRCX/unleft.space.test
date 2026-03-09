@@ -17,15 +17,14 @@ export default function CTAButtons() {
             Start a Project
           </HoverButton>
         </motion.div>
-
-        <motion.a
-          href="/contact"
-          whileHover={{ scale: 1.03 }}
-          className="group flex items-center gap-2 text-[#E5E7EB] transition-colors hover:text-[#C084FC]"
-        >
-          Contact Us
-          <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-        </motion.a>
+        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
+          <HoverButton
+            onClick={() => (window.location.href = "/projects")}
+            className="h-14 px-10 text-lg font-bold shadow-[0_0_20px_rgba(124,58,237,0.4)]"
+          >
+            View Our Work
+          </HoverButton>
+        </motion.div>
       </div>
     </MotionConfig>
   );

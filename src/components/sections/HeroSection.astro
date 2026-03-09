@@ -2,7 +2,7 @@
 import HeroContent from '@/components/sections/HeroContent';
 ---
 
-<section class="relative flex min-h-[92vh] flex-col items-center justify-center overflow-hidden px-6">
+<section class="relative flex min-h-[92vh] flex-col overflow-hidden px-6 justify-center">
   <!-- Layered glow blobs -->
   <div class="pointer-events-none absolute inset-0 -z-10">
     <div class="absolute left-1/2 top-0 -translate-x-1/2 h-[600px] w-[600px] rounded-full bg-[#7C3AED]/12 blur-[120px]"></div>
@@ -17,7 +17,9 @@ import HeroContent from '@/components/sections/HeroContent';
   ></div>
 
   <!-- Animated hero content island -->
-  <HeroContent client:load />
+  <div class="relative z-10 w-full max-w-[90rem] mx-auto">
+    <HeroContent client:load />
+  </div>
 
   <!-- Bottom separator -->
   <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#7C3AED]/30 to-transparent"></div>
