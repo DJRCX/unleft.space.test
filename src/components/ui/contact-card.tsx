@@ -48,7 +48,7 @@ export function ContactCard({
 			
             <div className="flex flex-col justify-between lg:col-span-3">
 				<div className="relative h-full space-y-6 px-6 py-10 md:p-12 text-left">
-					<h2 className="text-3xl font-bold md:text-4xl lg:text-5xl text-text-primary tracking-tighter" style={{ fontFamily: "'Bruno Ace SC', sans-serif" }}>
+					<h2 className="text-3xl font-bold md:text-4xl lg:text-5xl text-text-primary tracking-tighter">
 						{title}
 					</h2>
 					<p className="text-text-secondary max-w-xl text-sm md:text-base lg:text-lg leading-relaxed">

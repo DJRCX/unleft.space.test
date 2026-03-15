@@ -71,8 +71,7 @@ export function NotFoundPage() {
       <Empty className="border-none mt-20">
         <EmptyHeader>
           <EmptyTitle
-            className="font-extrabold text-8xl text-primary/80"
-            style={{ fontFamily: "'Bruno Ace SC', sans-serif" }}
+            className="font-extrabold text-8xl text-primary/80 font-gupter"
           >
             404
           </EmptyTitle>

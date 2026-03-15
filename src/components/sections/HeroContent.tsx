@@ -6,24 +6,60 @@ import { ChevronRight, MoveRight } from "lucide-react";
 import { HoverButton } from "@/components/ui/hover-button";
 
 export default function HeroContent() {
+  const headlineWords = ["Engineering", "the", "Future,"];
+  const accentWords = ["Beyond", "Software."];
+
+  const container = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.09, delayChildren: 0.2 },
+    },
+  };
+
+  const word = {
+    hidden: { opacity: 0, y: 24 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: "easeOut" as const },
+    },
+  };
+
   return (
     <MotionConfig reducedMotion="user">
-      <div className="relative z-10 flex flex-col items-start">
+      <div className="relative z-10 flex flex-col items-center text-center">
         <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="mb-6 text-5xl font-bold tracking-tight text-[#E5E7EB] md:text-6xl lg:text-7xl"
-          style={{ lineHeight: 1.1 }}
+          variants={container}
+          initial="hidden"
+          animate="visible"
+          className="mb-6 text-5xl font-bold tracking-tight text-[#E5E7EB] md:text-7xl lg:text-8xl"
+          style={{ lineHeight: 1.1, fontFamily: "'Gupter', serif" }}
         >
-          Engineering the Future, <br />
-          <span className="text-[#7C3AED]">Beyond Software.</span>
+          <div className="flex flex-wrap justify-center gap-x-[0.25em] overflow-hidden pb-1">
+            {headlineWords.map((w, i) => (
+              <motion.span key={i} variants={word} className="inline-block">
+                {w}
+              </motion.span>
+            ))}
+          </div>
+          <div className="flex flex-wrap justify-center gap-x-[0.25em] overflow-hidden pb-1">
+            {accentWords.map((w, i) => (
+              <motion.span
+                key={i}
+                variants={word}
+                className="inline-block text-[#7C3AED]"
+              >
+                {w}
+              </motion.span>
+            ))}
+          </div>
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          transition={{ duration: 0.5, delay: 0.8 }}
           className="mb-10 max-w-2xl text-lg leading-relaxed text-[#9CA3AF] md:text-xl"
         >
           We combine the creativity of a game studio with the precision of
@@ -34,8 +70,8 @@ export default function HeroContent() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="flex flex-col justify-start gap-4 sm:flex-row"
+          transition={{ duration: 0.5, delay: 1.0 }}
+          className="flex flex-col items-center gap-4 sm:flex-row"
         >
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
             <HoverButton

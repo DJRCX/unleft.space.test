@@ -1,0 +1,50 @@
+---
+// BrandReveal.astro
+// Pinned, giant typography background "revealed" by the scrolling page layout.
+//
+// Style Rules Enforced:
+// - Neo-Brutalist typography
+// - NO PURPLE (Using deeply contrasted Slate/Zinc instead for premium monochrome presence)
+---
+
+<footer
+  id="fixed-brand"
+  class="fixed bottom-0 left-0 w-full z-10 bg-black flex justify-center items-end overflow-hidden select-none pointer-events-auto group"
+>
+  {/* Subltle mouse-following glow */}
+  <div 
+    id="brand-glow"
+    class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+    style="background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(124, 58, 237, 0.08), transparent 80%);"
+  ></div>
+
+  <h1 class="relative z-10 text-[22vw] md:text-[24vw] font-black text-zinc-900 leading-[0.78] -mb-2 tracking-tighter uppercase font-heading transition-colors duration-700 group-hover:text-zinc-800">
+    UNLEFT
+  </h1>
+
+  <script>
+    const brandFooter = document.getElementById('fixed-brand');
+    
+    function handleMouseMove(e) {
+      if (!brandFooter) return;
+      const rect = brandFooter.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      brandFooter.style.setProperty('--mouse-x', `${x}px`);
+      brandFooter.style.setProperty('--mouse-y', `${y}px`);
+    }
+
+    if (brandFooter) {
+      brandFooter.addEventListener('mousemove', handleMouseMove);
+    }
+
+    // Re-bind on Astro page navigation
+    document.addEventListener('astro:page-load', () => {
+      const newFooter = document.getElementById('fixed-brand');
+      if (newFooter) {
+        newFooter.addEventListener('mousemove', handleMouseMove);
+      }
+    });
+  </script>
+</footer>

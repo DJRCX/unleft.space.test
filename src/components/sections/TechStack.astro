@@ -17,7 +17,8 @@ import { svg as dockerSvg, title as dockerTitle } from 'thesvg/docker';
 import { svg as vercelSvg, title as vercelTitle } from 'thesvg/vercel';
 import { svg as netlifySvg, title as netlifyTitle } from 'thesvg/netlify';
 import { svg as renderSvg, title as renderTitle } from 'thesvg/render';
-import { svg as tensorflowSvg, title as tensorflowTitle } from 'thesvg/tensorflow';
+import { tensorflowSvg } from '@/lib/custom-icons';
+const tensorflowTitle = 'TensorFlow';
 import { uniqueifySvgIds } from '@/lib/utils';
 
 const rowOne = [
@@ -96,9 +97,16 @@ const rowTwo = [
     position: absolute;
     top: 0;
     bottom: 0;
-    width: 180px;
+    width: 60px;
     z-index: 10;
     pointer-events: none;
+  }
+
+  @media (min-width: 768px) {
+    .tech-stack-section::before,
+    .tech-stack-section::after {
+      width: 180px;
+    }
   }
 
   .tech-stack-section::before {

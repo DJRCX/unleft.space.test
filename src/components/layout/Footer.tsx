@@ -53,7 +53,7 @@ const footerLinks: FooterSection[] = [
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="relative w-full border-t border-border/40 overflow-hidden pb-0">
+    <footer className="relative w-full border-t border-border/40 overflow-hidden pb-0 bg-background z-20">
       {/* Top glow line */}
       <div className="bg-primary/20 absolute top-0 right-1/2 left-1/2 h-px w-1/3 -translate-x-1/2 -translate-y-1/2 rounded-full blur-md" />
 
@@ -99,7 +99,7 @@ export default function Footer() {
         {footerLinks.map((section, index) => (
           <AnimatedContainer key={section.label} delay={0.1 + index * 0.1}>
             <div className="mb-0">
-              <h3 className="text-sm tracking-wider uppercase font-semibold text-foreground/90">
+              <h3 className="text-sm tracking-[0.2em] uppercase font-heading font-normal text-foreground/90">
                 {section.label}
               </h3>
               <ul className="text-muted-foreground mt-4 space-y-2 text-sm">

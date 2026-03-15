@@ -91,9 +91,16 @@ const cards = [...testimonials, ...testimonials];
     position: absolute;
     top: 80px;
     bottom: 0;
-    width: 180px;
+    width: 60px;
     z-index: 10;
     pointer-events: none;
+  }
+
+  @media (min-width: 768px) {
+    .testimonials-section::before,
+    .testimonials-section::after {
+      width: 180px;
+    }
   }
 
   .testimonials-section::before {

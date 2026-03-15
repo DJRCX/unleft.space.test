@@ -24,11 +24,13 @@ export function SplashScreen() {
       return;
     }
 
+    // Mark as seen immediately — prevents re-triggering on fast navigation
+    sessionStorage.setItem("Unleft-splash-seen", "true");
+
     // Set a timer to hide the splash screen after the animation completes
     // The shader takes about ~3-4 seconds to expand fully outwards
     const timer = setTimeout(() => {
       setIsVisible(false);
-      sessionStorage.setItem("Unleft-splash-seen", "true");
     }, 4000);
 
     if (!containerRef.current) return;

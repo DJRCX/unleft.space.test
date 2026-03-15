@@ -1,11 +1,11 @@
 ---
-import '@/styles/global.css';
-import { ViewTransitions } from 'astro:transitions';
-import CookieBanner from '@/components/layout/CookieBanner';
-import { EtheralShadow } from '@/components/ui/EtheralShadow';
-import { SplashScreen } from '@/components/ui/SplashScreen';
+import "@/styles/global.css";
+import { ViewTransitions } from "astro:transitions";
+import CookieBanner from "@/components/layout/CookieBanner";
+import { EtheralShadow } from "@/components/ui/EtheralShadow";
+import { SplashScreen } from "@/components/ui/SplashScreen";
 
-import { SEO } from 'astro-seo';
+import { SEO } from "astro-seo";
 
 interface Props {
   title: string;
@@ -17,13 +17,13 @@ interface Props {
 
 const {
   title,
-  description = 'Engineering the Future. Beyond Software.',
-  image = '/og-image.png',
+  description = "Engineering the Future. Beyond Software.",
+  image = "/og-image.png",
   noindex = false,
   nofollow = false,
 } = Astro.props;
 
-const siteBase = Astro.site ?? new URL('https://unleft.space');
+const siteBase = Astro.site ?? new URL("https://unleft.space");
 const canonicalURL = new URL(Astro.url.pathname, siteBase).toString();
 const ogImageURL = new URL(image, siteBase).toString();
 const fullTitle = `${title} | Unleft`;
@@ -34,8 +34,17 @@ const fullTitle = `${title} | Unleft`;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="96x96" href="/favicons/favicon-96x96.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="/favicons/favicon-96x96.png"
+    />
     <link rel="icon" type="image/svg+xml" href="/favicons/favicon.svg" />
     <link rel="shortcut icon" href="/favicons/favicon.ico" />
     <link rel="manifest" href="/favicons/site.webmanifest" />
@@ -59,7 +68,7 @@ const fullTitle = `${title} | Unleft`;
           siteName: "Unleft",
           locale: "en_US",
           description: description,
-        }
+        },
       }}
       twitter={{
         card: "summary_large_image",
@@ -82,14 +91,14 @@ const fullTitle = `${title} | Unleft`;
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <!-- Non-blocking async font load — avoids render-blocking while preserving swap -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Libre+Barcode+39+Extended+Text&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Gupter:wght@400;700&family=Libre+Barcode+39+Extended+Text&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap"
       rel="stylesheet"
       media="print"
       onload="this.media='all'"
     />
     <noscript>
       <link
-        href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Libre+Barcode+39+Extended+Text&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Gupter:wght@400;700&family=Libre+Barcode+39+Extended+Text&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap"
         rel="stylesheet"
       />
     </noscript>
@@ -101,10 +110,12 @@ const fullTitle = `${title} | Unleft`;
     <!-- FOUC prevention: Immediately cover screen if no session storage flag -->
     <script>
       if (!sessionStorage.getItem("Unleft-splash-seen")) {
-        document.write('<div id="splash-blocker" style="position:fixed;inset:0;background-color:hsl(var(--background));z-index:99;"></div>');
-        window.addEventListener('load', () => {
-          const blocker = document.getElementById('splash-blocker');
-          if (blocker) blocker.style.display = 'none';
+        document.write(
+          '<div id="splash-blocker" style="position:fixed;inset:0;background-color:hsl(var(--background));z-index:99;"></div>',
+        );
+        window.addEventListener("load", () => {
+          const blocker = document.getElementById("splash-blocker");
+          if (blocker) blocker.style.display = "none";
         });
       }
     </script>

@@ -206,7 +206,6 @@ function ProjectCard({
           <div>
             <h2
               className="text-4xl md:text-5xl font-bold tracking-tighter text-[#E5E7EB] leading-none mb-3"
-              style={{ fontFamily: "'Bruno Ace SC', sans-serif" }}
             >
               <span style={{ color: project.color }}>{project.title}</span>
             </h2>

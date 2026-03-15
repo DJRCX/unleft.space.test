@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import * as d3 from "d3"
 
 interface RotatingEarthProps {
@@ -20,6 +20,7 @@ export default function RotatingEarth({
   globeScale = 1.0,
 }: RotatingEarthProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const isVisibleRef = useRef(false)
 
   useEffect(() => {
     if (!canvasRef.current) return
@@ -36,8 +37,6 @@ export default function RotatingEarth({
     const dpr = Math.min(window.devicePixelRatio || 1, 2)
     canvas.width = containerWidth * dpr
     canvas.height = containerHeight * dpr
-    canvas.style.width = `${containerWidth}px`
-    canvas.style.height = `${containerHeight}px`
     context.scale(dpr, dpr)
 
     const projection = d3
@@ -170,7 +169,7 @@ export default function RotatingEarth({
 
     // ─── Rotation ───────────────────────────────────────────────────────────────
 
-    const rotation = [0, 0]
+    const rotation: [number, number] = [0, 0]
     let autoRotate = true
     let scrollVelocity = 0
     const scrollDecay = 0.90
@@ -178,14 +177,15 @@ export default function RotatingEarth({
     let lastScrollY = window.scrollY
 
     const rotate = () => {
+      if (!isVisibleRef.current) return
       if (Math.abs(scrollVelocity) > 0.01) {
         rotation[0] += scrollVelocity
         scrollVelocity *= scrollDecay
-        projection.rotate(rotation)
+        projection.rotate(rotation as [number, number])
         render()
       } else if (autoRotate) {
         rotation[0] += 0.1
-        projection.rotate(rotation)
+        projection.rotate(rotation as [number, number])
         render()
       }
     }
@@ -212,7 +212,7 @@ export default function RotatingEarth({
         const dy = e.clientY - startY
         rotation[0] = startRotation[0] + dx * 0.5
         rotation[1] = Math.max(-90, Math.min(90, startRotation[1] - dy * 0.5))
-        projection.rotate(rotation)
+        projection.rotate(rotation as [number, number])
         render()
       }
 
@@ -227,28 +227,36 @@ export default function RotatingEarth({
     }
     canvas.addEventListener("mousedown", handleMouseDown)
 
+    // ─── IntersectionObserver — pause timer when off-screen ─────────────────────
+    const observer = new IntersectionObserver(
+      ([entry]) => { isVisibleRef.current = entry.isIntersecting },
+      { threshold: 0.1 }
+    )
+    observer.observe(canvas)
+
     // ─── Load world data ────────────────────────────────────────────────────────
 
     let aborted = false
 
-    ;(async () => {
-      try {
-        const res = await fetch(
-          "https://raw.githubusercontent.com/martynafford/natural-earth-geojson/refs/heads/master/110m/physical/ne_110m_land.json",
-        )
-        if (!res.ok || aborted) return
-        landFeatures = await res.json()
-        if (aborted) return
-        // Build dots asynchronously, yielding between features
-        await buildDots(landFeatures.features)
-      } catch {
-        // Silently degrade — globe still renders in wireframe mode
-      }
-    })()
+      ; (async () => {
+        try {
+          const res = await fetch(
+            "https://raw.githubusercontent.com/martynafford/natural-earth-geojson/refs/heads/master/110m/physical/ne_110m_land.json",
+          )
+          if (!res.ok || aborted) return
+          landFeatures = await res.json()
+          if (aborted) return
+          // Build dots asynchronously, yielding between features
+          await buildDots(landFeatures.features)
+        } catch {
+          // Silently degrade — globe still renders in wireframe mode
+        }
+      })()
 
     return () => {
       aborted = true
       rotationTimer.stop()
+      observer.disconnect()
       window.removeEventListener("scroll", handleScroll)
       canvas.removeEventListener("mousedown", handleMouseDown)
     }
@@ -257,8 +265,8 @@ export default function RotatingEarth({
   return (
     <canvas
       ref={canvasRef}
-      className={`w-full h-auto ${className}`}
-      style={{ maxWidth: "100%", height: "auto", background: "transparent" }}
+      className={`w-full aspect-square h-auto ${className}`}
+      style={{ maxWidth: "100%", height: "auto", aspectRatio: "1/1", background: "transparent" }}
     />
   )
 }

@@ -2,6 +2,8 @@
 import BaseLayout from './BaseLayout.astro';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import BrandReveal from '@/components/layout/BrandReveal.astro';
+import { EtheralShadow } from '@/components/ui/EtheralShadow';
 
 interface Props {
   title: string;
@@ -16,8 +18,40 @@ const { title, description, image, noindex, nofollow } = Astro.props;
 
 <BaseLayout title={title} description={description} image={image} noindex={noindex} nofollow={nofollow}>
   <Header client:load transition:persist="site-header" />
-  <main class="pt-20 min-h-screen">
-    <slot />
-  </main>
-  <Footer client:visible />
+  
+  <div 
+    id="scroll-container" 
+    class="relative z-20 bg-background transition-all duration-100 ease-out"
+    style="clip-path: inset(0);"
+  >
+    <div class="relative z-30">
+      <main class="pt-20 min-h-screen">
+        <slot />
+      </main>
+      <Footer client:visible />
+    </div>
+    {/* Restoring fixed behavior but scoped/clipped by the parent container */}
+    <EtheralShadow client:idle transition:persist="etheral-shadow" zIndex={1} position="fixed" />
+  </div>
+
+  <BrandReveal />
+
+  <script>
+    function updateRevealSpace() {
+      const fixedBrand = document.getElementById('fixed-brand');
+      const scrollContainer = document.getElementById('scroll-container');
+      
+      if (fixedBrand && scrollContainer) {
+        const brandHeight = fixedBrand.offsetHeight;
+        scrollContainer.style.marginBottom = `${brandHeight}px`;
+      }
+    }
+
+    // Run on initial load and resize
+    window.addEventListener('load', updateRevealSpace);
+    window.addEventListener('resize', updateRevealSpace);
+    
+    // Also run after Astro page transitions
+    document.addEventListener('astro:page-load', updateRevealSpace);
+  </script>
 </BaseLayout>

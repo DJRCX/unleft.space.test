@@ -4,7 +4,14 @@ import CTASection from "@/components/sections/CTASection.astro";
 import { Badge } from "@/components/ui/badge";
 import { LogoCloud } from "@/components/ui/logo-cloud-2";
 import { cn } from "@/lib/utils";
-import { Rocket, Target, Globe, Heart, Github, ExternalLink } from "lucide-react";
+import {
+  Rocket,
+  Target,
+  Globe,
+  Heart,
+  Github,
+  ExternalLink,
+} from "lucide-react";
 
 const values = [
   {
@@ -110,22 +117,44 @@ const team = [
   description="Unleft is a performance-driven software company based in Dhaka, Bangladesh, combining game studio creativity with enterprise engineering precision."
 >
   <section class="w-full px-4 md:px-12 py-24 text-center">
-    <Badge className="mb-6 bg-accent-primary/10 text-accent-glow border-none mx-auto w-fit">About Unleft</Badge>
-    <h1 class="text-4xl md:text-6xl font-bold text-text-primary mb-8 tracking-tighter" style={{ fontFamily: "'Bruno Ace SC', sans-serif" }}>
+    <Badge
+      className="mb-6 bg-accent-primary/10 text-accent-glow border-none mx-auto w-fit font-gupter"
+      >About Unleft</Badge
+    >
+    <h1
+      class="text-4xl md:text-6xl font-bold text-text-primary mb-8 tracking-tighter"
+    >
       Beyond <span class="text-accent-primary">Software</span>.
     </h1>
-    <p class="text-xl text-text-secondary leading-relaxed mb-12 max-w-2xl mx-auto">
-      Unleft is a futuristic, performance-driven software solutions company. We combine the creativity of a game studio with the precision of enterprise engineering.
+    <p
+      class="text-xl text-text-secondary leading-relaxed mb-12 max-w-2xl mx-auto"
+    >
+      Unleft is a futuristic, performance-driven software solutions company. We
+      combine the creativity of a game studio with the precision of enterprise
+      engineering.
     </p>
 
     <div class="max-w-4xl mx-auto">
       <div class="relative group">
-        <div class="absolute -inset-4 bg-gradient-to-r from-accent-primary/10 to-accent-secondary/10 rounded-3xl blur-2xl transition-opacity group-hover:opacity-100 opacity-70"></div>
-        <div class="relative rounded-2xl border border-[#2D2D44] bg-[#0A0A0F]/60 p-8 md:p-12 backdrop-blur-sm">
-          <blockquote class="text-2xl font-heading font-bold text-text-primary leading-tight italic">
-            "We engineer digital experiences that push the boundaries of what's possible — combining gaming aesthetics with enterprise-grade performance."
+        <div
+          class="absolute -inset-4 bg-gradient-to-r from-accent-primary/10 to-accent-secondary/10 rounded-3xl blur-2xl transition-opacity group-hover:opacity-100 opacity-70"
+        >
+        </div>
+        <div
+          class="relative rounded-2xl border border-[#2D2D44] bg-[#0A0A0F]/60 p-8 md:p-12 backdrop-blur-sm"
+        >
+          <blockquote
+            class="text-2xl font-heading font-bold text-text-primary leading-tight italic"
+          >
+            "We engineer digital experiences that push the boundaries of what's
+            possible — combining gaming aesthetics with enterprise-grade
+            performance."
           </blockquote>
-          <p class="mt-6 text-sm text-accent-glow font-mono uppercase tracking-[0.2em]">— Our Promise</p>
+          <p
+            class="mt-6 text-sm text-accent-glow font-mono uppercase tracking-[0.2em]"
+          >
+            — Our Promise
+          </p>
         </div>
       </div>
     </div>
@@ -191,28 +220,30 @@ const team = [
                   >
                     {member.desc}
                   </p>
-                  
-                  <div class="mt-4 flex items-center gap-3">
+
+                  <div class="mt-4 flex flex-wrap items-center gap-4">
                     {member.github && (
-                      <a 
-                        href={member.github} 
-                        target="_blank" 
+                      <a
+                        href={member.github}
+                        target="_blank"
                         rel="noopener noreferrer"
-                        class="text-text-secondary hover:text-accent-glow transition-colors"
+                        class="flex items-center gap-1.5 text-xs text-text-secondary hover:text-accent-glow transition-colors"
                         title="GitHub Profile"
                       >
-                        <Github size={18} />
+                        <Github size={15} />
+                        <span>View Profile</span>
                       </a>
                     )}
                     {member.portfolio && (
-                      <a 
-                        href={member.portfolio} 
-                        target="_blank" 
+                      <a
+                        href={member.portfolio}
+                        target="_blank"
                         rel="noopener noreferrer"
-                        class="text-text-secondary hover:text-accent-glow transition-colors"
+                        class="flex items-center gap-1.5 text-xs text-text-secondary hover:text-accent-glow transition-colors"
                         title="Portfolio Website"
                       >
-                        <ExternalLink size={18} />
+                        <ExternalLink size={15} />
+                        <span>View Portfolio</span>
                       </a>
                     )}
                   </div>

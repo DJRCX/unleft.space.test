@@ -64,7 +64,9 @@ export function EtheralShadow({
   style,
   className,
   children,
-}: ShadowOverlayProps) {
+  zIndex = -1,
+  position = "fixed",
+}: ShadowOverlayProps & { zIndex?: number; position?: "fixed" | "absolute" }) {
   const id = useInstanceId();
   const animationEnabled = animation && animation.scale > 0;
   const feColorMatrixRef = useRef<SVGFEColorMatrixElement>(null);
@@ -111,11 +113,11 @@ export function EtheralShadow({
       className={className}
       style={{
         overflow: "hidden",
-        position: "fixed", // Changed to fixed for background role
+        position: position, // Respect prop but default is fixed
         inset: 0,
         width: "100%",
         height: "100%",
-        zIndex: -1, // Behind everything
+        zIndex: zIndex, // Behind everything
         pointerEvents: "none", // Don't block interaction
         ...style,
       }}
