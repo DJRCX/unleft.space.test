@@ -56,7 +56,7 @@ const useInstanceId = (): string => {
 };
 
 // --- PERFORMANCE TOGGLE ---
-const SHOW_SHADOW = true; // Set to false to disable globally in code
+const SHOW_SHADOW = false; // Set to false to disable globally in code
 // --------------------------
 
 export function EtheralShadow({
