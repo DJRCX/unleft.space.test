@@ -55,6 +55,10 @@ const useInstanceId = (): string => {
   return instanceId;
 };
 
+// --- PERFORMANCE TOGGLE ---
+const SHOW_SHADOW = true; // Set to false to disable globally in code
+// --------------------------
+
 export function EtheralShadow({
   sizing = "fill",
   color = "rgba(124, 58, 237, 0.5)", // Increased from 0.15 to 0.5 for more visibility
@@ -67,6 +71,18 @@ export function EtheralShadow({
   position = "fixed",
 }: ShadowOverlayProps & { zIndex?: number; position?: "fixed" | "absolute" }) {
   const id = useInstanceId();
+  const [isEnabled, setIsEnabled] = React.useState(SHOW_SHADOW);
+
+  // Allow overriding via URL for quick benchmarking: ?shadow=false or ?shadow=off
+  React.useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const shadowParam = params.get("shadow");
+    if (shadowParam === "false" || shadowParam === "off") {
+      setIsEnabled(false);
+    }
+  }, []);
+
+  if (!isEnabled) return null;
 
   const animationEnabled = animation && animation.scale > 0;
 
