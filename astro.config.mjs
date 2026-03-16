@@ -17,5 +17,11 @@ export default defineConfig({
         "@": "/src",
       },
     },
+    optimizeDeps: {
+      include: ["nanostores", "@nanostores/react", "lucide-react", "clsx", "tailwind-merge", "framer-motion"],
+    },
+    ssr: {
+      noExternal: ["nanostores", "@nanostores/react", "lucide-react", "clsx", "tailwind-merge", "framer-motion"],
+    },
   },
 });

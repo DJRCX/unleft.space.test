@@ -3,7 +3,7 @@ import BaseLayout from './BaseLayout.astro';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import BrandReveal from '@/components/layout/BrandReveal.astro';
-import { EtheralShadow } from '@/components/ui/EtheralShadow';
+import { BackgroundLayer } from '@/components/ui/BackgroundLayer';
 
 interface Props {
   title: string;
@@ -30,8 +30,7 @@ const { title, description, image, noindex, nofollow } = Astro.props;
       </main>
       <Footer client:visible />
     </div>
-    {/* Restoring fixed behavior but scoped/clipped by the parent container */}
-    <EtheralShadow client:idle transition:persist="etheral-shadow" zIndex={1} position="fixed" />
+    <BackgroundLayer client:load transition:persist="background-layer" />
   </div>
 
   <BrandReveal />

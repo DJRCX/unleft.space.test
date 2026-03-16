@@ -1,8 +1,8 @@
 ---
 import "@/styles/global.css";
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 import CookieBanner from "@/components/layout/CookieBanner";
-import { EtheralShadow } from "@/components/ui/EtheralShadow";
+import { BackgroundToggleUI } from "@/components/ui/BackgroundToggleUI";
 import { SplashScreen } from "@/components/ui/SplashScreen";
 
 import { SEO } from "astro-seo";
@@ -104,7 +104,7 @@ const fullTitle = `${title} | Unleft`;
     </noscript>
 
     <!-- Astro View Transitions: persists header, background, and cookie banner across navigations -->
-    <ViewTransitions />
+    <ClientRouter />
   </head>
   <body>
     <!-- FOUC prevention: Immediately cover screen if no session storage flag -->
@@ -120,7 +120,7 @@ const fullTitle = `${title} | Unleft`;
       }
     </script>
     <SplashScreen client:load transition:persist="splash" />
-    <EtheralShadow client:idle transition:persist="etheral-shadow" />
+    <BackgroundToggleUI client:load transition:persist="background-toggle" />
     <slot />
     <CookieBanner client:idle transition:persist="cookie-banner" />
   </body>
