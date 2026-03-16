@@ -9,6 +9,9 @@ const backgrounds: { id: BackgroundId; label: string; emoji: string }[] = [
   { id: "hexagon", label: "Hexagon", emoji: "⬡" },
   { id: "novatrix", label: "Novatrix", emoji: "◈" },
   { id: "grainient", label: "Grainient", emoji: "◉" },
+  { id: "aurora", label: "Aurora", emoji: "🌌" },
+  { id: "react-beams", label: "Beams 3D", emoji: "⟨⟩" },
+  { id: "darkveil", label: "Dark Veil", emoji: "◫" },
 ];
 
 export function BackgroundToggleUI() {
@@ -24,18 +27,18 @@ export function BackgroundToggleUI() {
 
   return (
     <div
-      className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2"
+      className="fixed bottom-10 left-10 z-50 flex flex-col items-start gap-3"
       style={{ pointerEvents: "all" }}
     >
       {/* Options popup */}
       {open && (
-        <div className="flex flex-col gap-1.5 rounded-2xl border border-white/10 bg-black/60 p-2 backdrop-blur-xl">
+        <div className="flex flex-col gap-1.5 rounded-2xl border border-white/10 bg-black/60 p-2.5 backdrop-blur-xl">
           {backgrounds.map((bg) => (
             <button
               key={bg.id}
               onClick={() => select(bg.id)}
               title={bg.label}
-              className={`flex items-center gap-2 rounded-xl px-3 py-2 text-xs font-medium transition-all duration-200 ${
+              className={`flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-medium transition-all duration-200 ${
                 active === bg.id
                   ? "bg-violet-600 text-white shadow-[0_0_12px_rgba(124,58,237,0.6)]"
                   : "text-white/60 hover:bg-white/10 hover:text-white"
@@ -53,7 +56,7 @@ export function BackgroundToggleUI() {
         onClick={() => setOpen((v) => !v)}
         title="Change background"
         aria-label="Toggle background style"
-        className="flex h-10 items-center gap-2 rounded-full border border-white/15 bg-black/50 px-3.5 text-xs font-medium text-white/70 backdrop-blur-xl transition-all duration-200 hover:border-violet-500/50 hover:text-white hover:shadow-[0_0_16px_rgba(124,58,237,0.4)] active:scale-95"
+        className="flex h-11 items-center gap-2 rounded-full border border-white/15 bg-black/50 px-4.5 text-xs font-medium text-white/70 backdrop-blur-xl transition-all duration-200 hover:border-violet-500/50 hover:text-white hover:shadow-[0_0_16px_rgba(124,58,237,0.4)] active:scale-95"
       >
         <span className="text-sm leading-none">{current.emoji}</span>
         <span className="hidden sm:inline">{current.label}</span>
