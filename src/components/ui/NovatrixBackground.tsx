@@ -55,7 +55,7 @@ interface NovatrixBackgroundProps {
 }
 
 export function NovatrixBackground({
-  color = [0.486, 0.227, 0.929], // #7C3AED (Nebula Purple)
+  color, // Default handled in effect
   speed = 1.0,
   amplitude = 0.1,
   mouseReact = false,
@@ -66,6 +66,19 @@ export function NovatrixBackground({
 
   useEffect(() => {
     if (!ctnDom.current) return;
+    
+    // Resolve color from theme if not provided
+    let finalColor = color;
+    if (!finalColor) {
+      const primaryHex = getComputedStyle(document.documentElement).getPropertyValue('--color-accent-primary').trim() || '#7C3AED';
+      // Simple hex to RGB [0-1] converter
+      const hex = primaryHex.replace('#', '');
+      const r = parseInt(hex.substring(0, 2), 16) / 255;
+      const g = parseInt(hex.substring(2, 4), 16) / 255;
+      const b = parseInt(hex.substring(4, 6), 16) / 255;
+      finalColor = [r, g, b];
+    }
+
     const ctn = ctnDom.current;
     const renderer = new Renderer();
     const gl = renderer.gl;
@@ -92,7 +105,7 @@ export function NovatrixBackground({
       fragment: fragmentShader,
       uniforms: {
         uTime: { value: 0 },
-        uColor: { value: new Color(...color) },
+        uColor: { value: new Color(...finalColor) },
         uResolution: {
           value: new Color(gl.canvas.width, gl.canvas.height, gl.canvas.width / gl.canvas.height),
         },

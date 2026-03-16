@@ -50,7 +50,7 @@ const tiers = [
   <section class="max-w-7xl mx-auto px-6 pb-24">
     <div class="grid md:grid-cols-3 gap-8 items-stretch">
       {tiers.map((tier) => (
-        <Card className={`border-[#2D2D44] bg-[#1A1A2E]/50 flex flex-col relative overflow-hidden transition-all duration-500 hover:shadow-2xl ${tier.highlighted ? 'border-accent-primary shadow-[0_0_40px_rgba(124,58,237,0.1)] scale-[1.02] z-10' : 'hover:border-accent-glow/30 hover:-translate-y-1'}`}>
+        <Card className={`border-border bg-card/50 flex flex-col relative overflow-hidden transition-all duration-500 hover:shadow-2xl ${tier.highlighted ? 'border-accent-primary shadow-[0_0_40px_rgba(124,58,237,0.1)] scale-[1.02] z-10' : 'hover:border-accent-glow/30 hover:-translate-y-1'}`}>
           {tier.highlighted && (
             <div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#7B2CBF] to-[#9D4EDD] shadow-[0_0_20px_rgba(124,58,237,0.5)]"></div>
           )}
@@ -64,7 +64,7 @@ const tiers = [
           </CardHeader>
 
           <CardContent className="flex flex-col flex-1 mt-auto">
-            <div class="mb-10 p-6 rounded-2xl bg-[#0A0A0F]/50 border border-[#2D2D44]/30">
+            <div class="mb-10 p-6 rounded-2xl bg-background/50 border border-border/30">
               <span class="text-4xl font-bold text-text-primary tracking-tight">{tier.price}</span>
               {!tier.price.includes('+') && <span class="text-text-secondary ml-1.5 text-sm uppercase tracking-widest">/ project</span>}
             </div>
@@ -85,8 +85,8 @@ const tiers = [
               client:load
               className={`w-full h-14 rounded-2xl transition-all ${
                 tier.highlighted
-                  ? '[--circle-start:#C084FC] [--circle-end:#7B2CBF] bg-[#7B2CBF]/10 text-white border border-[#C084FC]/30 hover:bg-[#7B2CBF]/20'
-                  : 'text-text-primary border border-[#2D2D44] hover:bg-[#1A1A2E] hover:border-[#C084FC]/20'
+                  ? '[--circle-start:var(--color-accent-glow)] [--circle-end:var(--color-accent-secondary)] bg-primary/10 text-white border border-ring/30 hover:bg-primary/20'
+                  : 'text-text-primary border border-border hover:bg-card hover:border-ring/20'
               }`}
             >
               <span class="font-bold tracking-wide">{tier.cta}</span>
@@ -97,7 +97,7 @@ const tiers = [
       ))}
     </div>
 
-    <div class="mt-24 text-center p-12 rounded-3xl border border-[#2D2D44]/30 bg-gradient-to-b from-transparent to-[#1A1A2E]/20">
+    <div class="mt-24 text-center p-12 rounded-3xl border border-border/30 bg-gradient-to-b from-transparent to-[#1A1A2E]/20">
       <p class="text-text-secondary mb-8 max-w-xl mx-auto text-lg leading-relaxed">
         Need a custom quote for complex <span class="text-text-primary font-medium">game development</span>, <span class="text-text-primary font-medium">AI systems</span>, or large-scale <span class="text-text-primary font-medium">custom software</span>?
       </p>
@@ -105,7 +105,7 @@ const tiers = [
       <HoverButton
         href="/contact?mode=custom"
         client:load
-        className="mx-auto rounded-full h-14 px-10 border border-accent-glow/20 bg-[#1A1A2E]/30 text-text-primary hover:border-accent-glow/40"
+        className="mx-auto rounded-full h-14 px-10 border border-accent-glow/20 bg-card/30 text-text-primary hover:border-accent-glow/40"
       >
         <span class="font-bold tracking-wide">Request a Custom Quote</span>
         <ArrowRight className="h-4 w-4" />

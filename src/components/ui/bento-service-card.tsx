@@ -41,7 +41,7 @@ export default function BentoServiceCard({
     <motion.div
       onMouseEnter={onHover}
       className={cn(
-        "group relative flex flex-col justify-between overflow-hidden border-[#2D2D44] bg-[#0A0A0F]/70 transition-all duration-500",
+        "group relative flex flex-col justify-between overflow-hidden border-border bg-background/70 transition-all duration-500",
         "border-[0.5px] hover:z-10",
         isRevealed ? "bg-[#0D0D14]" : "hover:bg-[#0D0D14]",
         className
@@ -57,7 +57,7 @@ export default function BentoServiceCard({
             className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
           />
           <div
-            className="absolute inset-0 bg-gradient-to-t from-[#0A0A0F] via-[#0A0A0F]/80 to-transparent"
+            className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent"
             style={{ backgroundColor: `${color}10` }}
           />
         </div>
@@ -88,14 +88,14 @@ export default function BentoServiceCard({
         <div className="flex items-start justify-between">
           <div className="flex flex-col gap-4">
             <div
-              className="flex h-12 w-12 items-center justify-center rounded-xl border border-[#2D2D44] transition-all duration-500 group-hover:scale-110 group-hover:border-[var(--primary)]/40"
+              className="flex h-12 w-12 items-center justify-center rounded-xl border border-border transition-all duration-500 group-hover:scale-110 group-hover:border-[var(--primary)]/40"
               style={{ backgroundColor: `${color}15`, color }}
             >
               {icon}
             </div>
             <div>
-              <h3 className="text-xl font-semibold tracking-tight text-[#E5E7EB]">{title}</h3>
-              <p className="mt-1 text-sm text-[#9CA3AF] font-light">{subtitle}</p>
+              <h3 className="text-xl font-semibold tracking-tight text-foreground">{title}</h3>
+              <p className="mt-1 text-sm text-muted-foreground font-light">{subtitle}</p>
             </div>
           </div>
         </div>
@@ -111,7 +111,7 @@ export default function BentoServiceCard({
                 transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
                 className="space-y-4"
               >
-                <p className="text-sm leading-relaxed text-[#9CA3AF]">{description}</p>
+                <p className="text-sm leading-relaxed text-muted-foreground">{description}</p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {features.map((feature, index) => (
                     <motion.div
@@ -119,7 +119,7 @@ export default function BentoServiceCard({
                       initial={{ opacity: 0, x: -10 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.2 + index * 0.05 }}
-                      className="flex items-center gap-2 text-xs text-[#D1D5DB]"
+                      className="flex items-center gap-2 text-xs text-muted-foreground"
                     >
                       <div className="h-1 w-1 rounded-full" style={{ backgroundColor: color }} />
                       <span>{feature}</span>
@@ -135,7 +135,7 @@ export default function BentoServiceCard({
                           href={links.github}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-2 text-xs text-[#9CA3AF] transition-colors hover:text-[#E5E7EB]"
+                          className="flex items-center gap-2 text-xs text-muted-foreground transition-colors hover:text-foreground"
                           onClick={(e) => e.stopPropagation()}
                         >
                           <Github className="h-4 w-4" />
@@ -147,7 +147,7 @@ export default function BentoServiceCard({
                           href={links.website}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-2 text-xs text-[#9CA3AF] transition-colors hover:text-[#E5E7EB]"
+                          className="flex items-center gap-2 text-xs text-muted-foreground transition-colors hover:text-foreground"
                           onClick={(e) => e.stopPropagation()}
                         >
                           <Globe className="h-4 w-4" />

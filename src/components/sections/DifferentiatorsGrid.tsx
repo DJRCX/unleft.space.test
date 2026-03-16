@@ -47,7 +47,7 @@ export default function DifferentiatorsGrid() {
           >
             <FeatureCard
               feature={item}
-              className="h-full rounded-xl border border-[#2D2D44] bg-[#0A0A0F]/50 transition-all hover:bg-[#1A1A2E]"
+              className="h-full rounded-xl border border-border bg-background/50 transition-all hover:bg-card"
             />
           </motion.div>
         ))}

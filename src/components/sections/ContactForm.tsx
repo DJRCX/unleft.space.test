@@ -93,16 +93,16 @@ export default function ContactForm({ showCustomFields: showCustomFieldsProp }: 
     return (
       <div className="flex flex-col items-center justify-center py-16 text-center">
         <CheckCircle2 className="h-16 w-16 text-emerald-400 mb-6" />
-        <h3 className="text-2xl font-bold text-[#E5E7EB] mb-2">
+        <h3 className="text-2xl font-bold text-foreground mb-2">
           Message Sent!
         </h3>
-        <p className="text-[#9CA3AF] mb-8">
+        <p className="text-muted-foreground mb-8">
           We'll get back to you within 24 hours.
         </p>
         <Button
           variant="outline"
           onClick={() => setStatus("idle")}
-          className="border-[#C084FC]/20 text-[#E5E7EB]"
+          className="border-ring/20 text-foreground"
         >
           Send Another
         </Button>
@@ -111,8 +111,8 @@ export default function ContactForm({ showCustomFields: showCustomFieldsProp }: 
   }
 
   const inputClasses =
-    "w-full bg-[#0A0A0F] border border-[#2D2D44] rounded-lg px-4 py-3 text-[#E5E7EB] placeholder:text-[#9CA3AF]/50 focus:outline-none focus:border-[#C084FC]/50 focus:ring-1 focus:ring-[#C084FC]/20 transition-all";
-  const labelClasses = "block text-sm font-medium text-[#9CA3AF] mb-1.5";
+    "w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-ring/50 focus:ring-1 focus:ring-ring/20 transition-all";
+  const labelClasses = "block text-sm font-medium text-muted-foreground mb-1.5";
   const errorClasses = "text-xs text-red-400 mt-1";
 
   return (
@@ -205,7 +205,7 @@ export default function ContactForm({ showCustomFields: showCustomFieldsProp }: 
       <HoverButton
         type="submit"
         disabled={status === "submitting"}
-        className="w-full h-14 border-none [--circle-start:#C084FC] [--circle-end:#7B2CBF] bg-[#7B2CBF]/10 text-white border border-[#C084FC]/30 hover:bg-[#7B2CBF]/20 shadow-[0_0_20px_rgba(124,58,237,0.3)] font-bold tracking-wide disabled:opacity-50"
+        className="w-full h-14 border-none [--circle-start:var(--color-accent-glow)] [--circle-end:var(--color-accent-secondary)] bg-primary/10 text-white border border-ring/30 hover:bg-primary/20 shadow-[0_0_20px_var(--color-accent-primary)] font-bold tracking-wide disabled:opacity-50"
       >
         {status === "submitting" ? (
           <>
@@ -216,9 +216,9 @@ export default function ContactForm({ showCustomFields: showCustomFieldsProp }: 
         )}
       </HoverButton>
 
-      <p className="text-xs text-center text-[#9CA3AF]">
+      <p className="text-xs text-center text-muted-foreground">
         We reply within 24 hours. Your data is protected per our{" "}
-        <a href="/legal/privacy" className="text-[#D8A8FF] underline hover:text-white transition-colors">
+        <a href="/legal/privacy" className="text-primary underline hover:text-white transition-colors">
           Privacy Policy
         </a>
         .

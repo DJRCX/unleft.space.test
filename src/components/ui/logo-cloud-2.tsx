@@ -20,19 +20,19 @@ export function LogoCloud({ className, items, ...props }: LogoCloudProps) {
   return (
     <div
       className={cn(
-        "relative grid grid-cols-1 border-x md:grid-cols-2 lg:grid-cols-4 border-[#2D2D44]",
+        "relative grid grid-cols-1 border-x md:grid-cols-2 lg:grid-cols-4 border-border",
         className
       )}
       {...props}
     >
-      <div className="-translate-x-1/2 -top-px pointer-events-none absolute left-1/2 w-screen border-t border-[#2D2D44]" />
+      <div className="-translate-x-1/2 -top-px pointer-events-none absolute left-1/2 w-screen border-t border-border" />
 
       {items && items.length > 0 ? (
         items.map((item, index) => (
           <LogoCard
             key={index}
             className={cn(
-              "relative border-r border-b border-[#2D2D44] bg-[#0A0A0F]/50 hover:bg-[#1A1A2E]/50 transition-colors group",
+              "relative border-r border-b border-border bg-background/50 hover:bg-card/50 transition-colors group",
               index % 4 === 3 ? "lg:border-r-0" : ""
             )}
             logo={item}
@@ -49,7 +49,7 @@ export function LogoCloud({ className, items, ...props }: LogoCloudProps) {
         </div>
       )}
 
-      <div className="-translate-x-1/2 -bottom-px pointer-events-none absolute left-1/2 w-screen border-b border-[#2D2D44]" />
+      <div className="-translate-x-1/2 -bottom-px pointer-events-none absolute left-1/2 w-screen border-b border-border" />
     </div>
   );
 }

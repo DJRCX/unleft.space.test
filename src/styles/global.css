@@ -32,16 +32,16 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  /* Unleft Custom Theme Tokens */
-  --color-background-primary: #0a0a0f;
-  --color-background-secondary: #1a1a2e;
-  --color-accent-primary: #7c3aed;
-  --color-accent-secondary: #9333ea;
-  --color-accent-glow: #c084fc;
-  --color-accent-highlight: #b185db;
-  --color-text-primary: #e5e7eb;
-  --color-text-secondary: #9ca3af;
-  --color-border-subtle: #2d2d44;
+  /* Unleft Custom Theme Tokens mapped to variables */
+  --color-background-primary: var(--color-background-primary);
+  --color-background-secondary: var(--color-background-secondary);
+  --color-accent-primary: var(--color-accent-primary);
+  --color-accent-secondary: var(--color-accent-secondary);
+  --color-accent-glow: var(--color-accent-glow);
+  --color-accent-highlight: var(--color-accent-highlight);
+  --color-text-primary: var(--color-text-primary);
+  --color-text-secondary: var(--color-text-secondary);
+  --color-border-subtle: var(--color-border-subtle);
 
   --font-heading: "Bruno Ace SC", sans-serif;
   --font-body: "Inter", sans-serif;
@@ -97,14 +97,48 @@
   --primary-foreground: #e5e7eb;
   --secondary: #9333ea;
   --secondary-foreground: #e5e7eb;
-  --muted: #1a1a2e;
+    --muted: #1a1a2e;
   --muted-foreground: #9ca3af;
-  --accent: #7c3aed;
+  --accent: #1a1a2e;
   --accent-foreground: #e5e7eb;
-  --destructive: #ef4444;
+  --destructive: #7f1d1d;
+  --destructive-foreground: #e5e7eb;
   --border: #2d2d44;
-  --input: #2d2d44;
-  --ring: #c084fc;
+  --input: #1a1a2e;
+  --ring: #7c3aed;
+
+  /* Default custom variables */
+  --color-background-primary: #0a0a0f;
+  --color-background-secondary: #1a1a2e;
+  --color-accent-primary: #7c3aed;
+  --color-accent-secondary: #9333ea;
+  --color-accent-glow: #c084fc;
+  --color-accent-highlight: #b185db;
+  --color-text-primary: var(--foreground);
+  --color-text-secondary: var(--muted-foreground);
+  --color-border-subtle: var(--border);
+}
+
+:root.theme-silver {
+  --background: #212529;
+  --foreground: #f8f9fa;
+  --card: #343a40;
+  --primary: #adb5bd;
+  --secondary: #ced4da;
+  --muted: #495057;
+  --accent: #adb5bd;
+  --border: #495057;
+  --input: #495057;
+  --ring: #dee2e6;
+
+  /* Custom overrides for the custom tokens */
+  --color-background-primary: #212529;
+  --color-background-secondary: #343a40;
+  --color-accent-primary: #f8f9fa;
+  --color-accent-secondary: #adb5bd;
+  --color-accent-glow: #e9ecef;
+  --color-accent-highlight: #ffffff;
+  --color-border-subtle: #495057;
 }
 
 @layer base {

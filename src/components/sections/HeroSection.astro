@@ -5,15 +5,15 @@ import HeroContent from '@/components/sections/HeroContent';
 <section class="relative flex min-h-[92vh] flex-col overflow-hidden px-6 justify-center">
   <!-- Layered glow blobs -->
   <div class="pointer-events-none absolute inset-0 -z-10">
-    <div class="absolute left-1/2 top-0 -translate-x-1/2 h-[600px] w-[600px] rounded-full bg-[#7C3AED]/12 blur-[120px]"></div>
-    <div class="absolute right-0 top-1/3 h-[300px] w-[300px] rounded-full bg-[#9333EA]/8 blur-[80px]"></div>
-    <div class="absolute left-0 bottom-1/4 h-[200px] w-[200px] rounded-full bg-[#7C3AED]/10 blur-[60px]"></div>
+    <div class="absolute left-1/2 top-0 -translate-x-1/2 h-[600px] w-[600px] rounded-full bg-primary/20 blur-[120px]"></div>
+    <div class="absolute right-0 top-1/3 h-[300px] w-[300px] rounded-full bg-secondary/15 blur-[80px]"></div>
+    <div class="absolute left-0 bottom-1/4 h-[200px] w-[200px] rounded-full bg-primary/15 blur-[60px]"></div>
   </div>
 
   <!-- Subtle star grid overlay -->
   <div
-    class="pointer-events-none absolute inset-0 -z-10 opacity-[0.03]"
-    style="background-image: radial-gradient(circle, #C084FC 1px, transparent 1px); background-size: 48px 48px;"
+    class="absolute inset-0 pointer-events-none opacity-20"
+    style="background-image: radial-gradient(circle, var(--color-accent-glow) 1px, transparent 1px); background-size: 48px 48px;"
   ></div>
 
   <!-- Animated hero content island -->
@@ -22,5 +22,5 @@ import HeroContent from '@/components/sections/HeroContent';
   </div>
 
   <!-- Bottom separator -->
-  <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#7C3AED]/30 to-transparent"></div>
+  <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
 </section>

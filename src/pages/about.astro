@@ -59,7 +59,7 @@ const team = [
     name: "Golam Rasul",
     role: "Chairperson",
     desc: "Leads Board, ensures vision & compliance.",
-    image: "/images/rasul1.jpg",
+    image: "/images/rasul1.webp",
     skills: ["Python", "HTML", "Ruby"],
     github: "https://github.com/rasul",
     portfolio: "https://rasul.me",
@@ -68,7 +68,7 @@ const team = [
     name: "Golam Morshed Eashan",
     role: "Executive Controlling Officer",
     desc: "Controls operation, decision maker.",
-    image: "/images/eashan.jpg",
+    image: "/images/eashan.webp",
     skills: ["Next.Js", "Tailwind CSS", "Python", "Django", "C#"],
     github: "https://github.com/eashan",
     portfolio: "https://eashan.portfolio",
@@ -77,7 +77,7 @@ const team = [
     name: "Sayma Ferdousi Fariha",
     role: "Managing Director",
     desc: "Aligns with investors & stakeholders.",
-    image: "/images/sayma.jpg",
+    image: "/images/sayma.webp",
     skills: ["HTML", "CSS", "Python", "Django"],
     github: "https://github.com/sayma",
     portfolio: "https://sayma.me",
@@ -86,7 +86,7 @@ const team = [
     name: "Mahtabul Al Nahian",
     role: "Chief Operating Officer",
     desc: "Manages internal operations.",
-    image: "/images/mahtab.jpg",
+    image: "/images/mahtab.webp",
     skills: ["Next.Js", "Astro", "Tailwind CSS", "JavaScript", "Figma"],
     github: "https://github.com/mahtab",
     portfolio: "https://mahtab.me",
@@ -95,7 +95,7 @@ const team = [
     name: "Nabila Rahman Rodela",
     role: "Chief Marketing Officer",
     desc: "Leads marketing and branding.",
-    image: "/logos/unleft_logo.png",
+    image: "/images/rodela.webp",
     skills: ["HTML", "CSS", "SQL", "SEO"],
     github: "https://github.com/rodela",
     portfolio: "https://rodela.me",
@@ -104,7 +104,7 @@ const team = [
     name: "Tafrim Ahmed",
     role: "Chief Logic Operator",
     desc: "Ensures reliability with robust programming.",
-    image: "/images/tafrim.jpg",
+    image: "/images/tafrim.webp",
     skills: ["HTML", "CSS", "JavaScript", "TensorFlow"],
     github: "https://github.com/tafrim",
     portfolio: "https://tafrim.me",
@@ -141,7 +141,7 @@ const team = [
         >
         </div>
         <div
-          class="relative rounded-2xl border border-[#2D2D44] bg-[#0A0A0F]/60 p-8 md:p-12 backdrop-blur-sm"
+          class="relative rounded-2xl border border-border bg-background/60 p-8 md:p-12 backdrop-blur-sm"
         >
           <blockquote
             class="text-2xl font-heading font-bold text-text-primary leading-tight italic"
@@ -166,7 +166,7 @@ const team = [
       Our Leadership
     </h2>
     <div
-      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 -space-x-px -space-y-px border-[#2D2D44] border-[0.5px]"
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 -space-x-px -space-y-px border-border border-[0.5px]"
     >
       {
         team.map((member, index) => {
@@ -182,7 +182,7 @@ const team = [
           return (
             <div
               class={cn(
-                "group relative p-8 border-[#2D2D44] border-[0.5px] bg-[#0A0A0F]/70 transition-all duration-500 hover:bg-[#0D0D14] hover:z-10 overflow-hidden",
+                "group relative p-8 border-border border-[0.5px] bg-background/70 transition-all duration-500 hover:bg-[#0D0D14] hover:z-10 overflow-hidden",
                 colSpan,
               )}
             >
@@ -196,7 +196,7 @@ const team = [
                   <img
                     src={member.image}
                     alt={member.name}
-                    class={`${isLeader ? "w-32 h-32" : "w-20 h-20"} rounded-2xl object-cover border-2 border-accent-primary/30 p-1 bg-[#0A0A0F] group-hover:scale-105 transition-transform duration-500`}
+                    class={`${isLeader ? "w-32 h-32" : "w-20 h-20"} rounded-2xl object-cover border-2 border-accent-primary/30 p-1 bg-background group-hover:scale-105 transition-transform duration-500`}
                   />
                 </div>
                 <div class="flex-grow">
@@ -265,7 +265,7 @@ const team = [
   </section>
 
   <!-- Core Values -->
-  <section class="bg-[#1A1A2E]/30 py-24">
+  <section class="bg-card/30 py-24">
     <div class="mx-auto max-w-7xl px-6">
       <h2 class="text-3xl font-bold text-text-primary mb-12 text-center">
         Core Values
@@ -297,7 +297,7 @@ const team = [
               class={`relative flex flex-col md:flex-row items-start gap-8 ${i % 2 === 1 ? "md:flex-row-reverse" : ""}`}
             >
               <div class="flex-1" />
-              <div class="relative z-10 flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-full border-2 border-accent-primary bg-[#0A0A0F]">
+              <div class="relative z-10 flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-full border-2 border-accent-primary bg-background">
                 <span
                   class={`text-xs font-mono font-bold ${phase.active ? "text-accent-glow" : "text-text-secondary"}`}
                 >
@@ -306,7 +306,7 @@ const team = [
               </div>
               <div class="flex-1">
                 <div
-                  class={`rounded-xl border p-6 ${phase.active ? "border-accent-primary bg-accent-primary/5" : "border-[#2D2D44] bg-[#1A1A2E]/30"}`}
+                  class={`rounded-xl border p-6 ${phase.active ? "border-accent-primary bg-accent-primary/5" : "border-border bg-card/30"}`}
                 >
                   <h3 class="font-bold text-text-primary mb-2">
                     {phase.label}

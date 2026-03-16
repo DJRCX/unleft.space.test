@@ -47,7 +47,7 @@ export default function ServicesGrid() {
           >
             <FeatureCard
               feature={s}
-              className="h-full rounded-xl border border-[#2D2D44] bg-[#0A0A0F]/50 transition-all hover:bg-[#1A1A2E] hover:border-[#7C3AED]/30"
+              className="h-full rounded-xl border border-border bg-background/50 transition-all hover:bg-card hover:border-primary/30"
             />
           </motion.div>
         ))}
@@ -55,4 +55,3 @@ export default function ServicesGrid() {
     </MotionConfig>
   );
 }
-

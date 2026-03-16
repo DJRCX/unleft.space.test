@@ -42,7 +42,7 @@ export default function ProjectsGrid({ projects }: { projects: ProjectItem[] }) 
 
   return (
     <div className="flex flex-col gap-12">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 -space-x-px -space-y-px border-[#2D2D44]/30">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 -space-x-px -space-y-px border-border/30">
         {projects.map((project) => (
           <BentoServiceCard
             key={project.title}

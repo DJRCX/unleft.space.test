@@ -59,7 +59,7 @@ export function NotFoundPage() {
               0,
             ],
           }}
-          className="absolute right-1/4 bottom-1/3 h-72 w-72 rounded-full bg-gradient-to-br from-indigo-400/10 to-purple-400/10 blur-3xl"
+          className="absolute right-1/4 bottom-1/3 h-72 w-72 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 blur-3xl"
           transition={{
             repeat: Number.POSITIVE_INFINITY,
             duration: 5,

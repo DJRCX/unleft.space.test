@@ -3,6 +3,7 @@ import "@/styles/global.css";
 import { ClientRouter } from "astro:transitions";
 import CookieBanner from "@/components/layout/CookieBanner";
 import { BackgroundToggleUI } from "@/components/ui/BackgroundToggleUI";
+import { ThemeToggleUI } from "@/components/ui/ThemeToggleUI";
 import { SplashScreen } from "@/components/ui/SplashScreen";
 
 import { SEO } from "astro-seo";
@@ -107,8 +108,9 @@ const fullTitle = `${title} | Unleft`;
     <ClientRouter />
   </head>
   <body>
-    <!-- FOUC prevention: Immediately cover screen if no session storage flag -->
+    <!-- FOUC prevention for Splash Screen: Immediately cover screen if no session storage flag -->
     <script>
+      // 1. Splash screen logic
       if (!sessionStorage.getItem("Unleft-splash-seen")) {
         document.write(
           '<div id="splash-blocker" style="position:fixed;inset:0;background-color:hsl(var(--background));z-index:99;"></div>',
@@ -118,8 +120,16 @@ const fullTitle = `${title} | Unleft`;
           if (blocker) blocker.style.display = "none";
         });
       }
+      
+      // 2. FOUC prevention for Theme Toolkit
+      const themeKey = 'unleft-theme-choice';
+      const storedTheme = localStorage.getItem(themeKey);
+      if (storedTheme === 'silver') {
+        document.documentElement.classList.add('theme-silver');
+      }
     </script>
     <SplashScreen client:load transition:persist="splash" />
+    <ThemeToggleUI client:load transition:persist="theme-toggle" />
     <BackgroundToggleUI client:load transition:persist="background-toggle" />
     <slot />
     <CookieBanner client:idle transition:persist="cookie-banner" />

@@ -69,8 +69,8 @@ export default function Terminal() {
   };
 
   return (
-    <div className="w-full max-w-3xl mx-auto rounded-xl border border-[#2D2D44] bg-[#0A0A0F] overflow-hidden shadow-2xl">
-      <div className="flex items-center justify-between px-4 py-2 bg-[#1A1A2E] border-b border-[#2D2D44]">
+    <div className="w-full max-w-3xl mx-auto rounded-xl border border-border bg-background overflow-hidden shadow-2xl">
+      <div className="flex items-center justify-between px-4 py-2 bg-card border-b border-border">
         <div className="flex items-center gap-2">
           <TerminalIcon className="h-4 w-4 text-accent-glow" />
           <span className="text-xs font-mono text-text-secondary">

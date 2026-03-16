@@ -70,7 +70,7 @@ export function HexagonBackground({
                   "before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-neutral-800 before:opacity-100 before:transition-all before:duration-1000",
                   "after:content-[''] after:absolute after:inset-[var(--hexagon-margin)] after:bg-neutral-950",
                   "after:[clip-path:polygon(50%_0%,_100%_25%,_100%_75%,_50%_100%,_0%_75%,_0%_25%)]",
-                  "hover:before:bg-violet-700 hover:before:opacity-100 hover:before:duration-0 hover:after:bg-neutral-900 hover:after:opacity-100 hover:after:duration-0",
+                  "hover:before:bg-primary hover:before:opacity-100 hover:before:duration-0 hover:after:bg-neutral-900 hover:after:opacity-100 hover:after:duration-0",
                   hexagonProps?.className,
                 )}
               />

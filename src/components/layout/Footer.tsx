@@ -76,7 +76,7 @@ export default function Footer() {
               />
               <span
                 style={{ fontFamily: "'Bruno Ace SC', sans-serif" }}
-                className="text-lg font-normal tracking-widest text-[#E5E7EB] leading-none select-none transition-colors group-hover:text-primary"
+                className="text-lg font-normal tracking-widest text-foreground leading-none select-none transition-colors group-hover:text-primary"
               >
                 UNLEFT.LLC
               </span>

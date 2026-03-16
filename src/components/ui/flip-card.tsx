@@ -20,7 +20,7 @@ export default function CardFlip({
 	subtitle = 'Launch your idea in record time',
 	description = 'Copy, paste, customize—and launch your MVP faster than ever.',
 	features = ['Fast Delivery', 'Scalable', 'Modern Stack', 'Production Ready'],
-	color = '#7C3AED',
+	color = 'var(--color-primary)',
 	icon,
 	backIcon,
 	ctaLabel = 'Learn More',
@@ -50,7 +50,7 @@ export default function CardFlip({
 						'absolute inset-0 h-full w-full',
 						'[transform:rotateY(0deg)] [backface-visibility:hidden]',
 						'overflow-hidden rounded-xl',
-						'border border-[#2D2D44] bg-[#0A0A0F]/70',
+						'border border-border bg-background/70',
 						'shadow-lg',
 						'transition-all duration-700',
 						'group-hover:border-[var(--primary)]/30 group-hover:shadow-[0_0_30px_rgba(0,0,0,0.5)]',
@@ -75,7 +75,7 @@ export default function CardFlip({
 					<div className="absolute inset-0 flex flex-col p-8">
 						{/* Icon top-left-ish */}
 						<div
-							className="flex h-12 w-12 items-center justify-center rounded-xl border border-[#2D2D44] transition-all duration-500 group-hover:scale-110 group-hover:border-[var(--primary)]/40"
+							className="flex h-12 w-12 items-center justify-center rounded-xl border border-border transition-all duration-500 group-hover:scale-110 group-hover:border-[var(--primary)]/40"
 							style={{ backgroundColor: `${color}15` }}
 						>
 							{icon && <div className="text-[var(--primary)]">{icon}</div>}
@@ -83,10 +83,10 @@ export default function CardFlip({
 
 						{/* Content bottom-left */}
 						<div className="mt-auto">
-							<h3 className="text-xl font-semibold tracking-tight text-[#E5E7EB] transition-all duration-500 group-hover:translate-y-[-4px]">
+							<h3 className="text-xl font-semibold tracking-tight text-foreground transition-all duration-500 group-hover:translate-y-[-4px]">
 								{title}
 							</h3>
-							<p className="mt-2 line-clamp-2 text-sm text-[#9CA3AF] font-light transition-all delay-[50ms] duration-500 group-hover:translate-y-[-4px]">
+							<p className="mt-2 line-clamp-2 text-sm text-muted-foreground font-light transition-all delay-[50ms] duration-500 group-hover:translate-y-[-4px]">
 								{subtitle}
 							</p>
 						</div>
@@ -122,16 +122,16 @@ export default function CardFlip({
 							>
 								{backIcon ? <div style={{ color }}>{backIcon}</div> : <div className="h-4 w-4 rounded-full" style={{ backgroundColor: color }} />}
 							</div>
-							<h3 className="text-lg font-semibold tracking-tight text-[#E5E7EB]">{title}</h3>
+							<h3 className="text-lg font-semibold tracking-tight text-foreground">{title}</h3>
 						</div>
 
-						<p className="text-sm leading-relaxed text-[#9CA3AF] mb-6">{description}</p>
+						<p className="text-sm leading-relaxed text-muted-foreground mb-6">{description}</p>
 
 						<div className="space-y-3">
 							{features.map((feature, index) => (
 								<div
 									key={feature}
-									className="flex items-center gap-3 text-sm text-[#D1D5DB]"
+									className="flex items-center gap-3 text-sm text-muted-foreground"
 									style={{
 										transform: isFlipped ? 'translateX(0)' : 'translateX(-10px)',
 										opacity: isFlipped ? 1 : 0,
@@ -145,13 +145,13 @@ export default function CardFlip({
 							))}
 						</div>
 
-						<div className="mt-auto pt-6 border-t border-[#2D2D44]">
+						<div className="mt-auto pt-6 border-t border-border">
 							<a
 								href={ctaHref}
-								className="flex items-center justify-between rounded-lg p-3 transition-all duration-300 hover:scale-[1.02] bg-[#1A1A2E]/50 border border-[#2D2D44] group/btn"
+								className="flex items-center justify-between rounded-lg p-3 transition-all duration-300 hover:scale-[1.02] bg-card/50 border border-border group/btn"
 								style={{ ['--btn-color' as any]: color }}
 							>
-								<span className="text-sm font-semibold text-[#E5E7EB]">{ctaLabel}</span>
+								<span className="text-sm font-semibold text-foreground">{ctaLabel}</span>
 								<svg
 									className="h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-1"
 									style={{ color }}

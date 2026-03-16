@@ -196,7 +196,7 @@ function ProjectCard({
               <span className="h-1.5 w-1.5 rounded-full bg-current animate-pulse" />
               {project.status}
             </span>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-[#1A1A2E]/80 text-[#9CA3AF] border border-[#2D2D44]/60">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-card/80 text-muted-foreground border border-border/60">
               {categoryIconMap[project.category] ?? <Code2 className="h-4 w-4" />}
               {project.category}
             </span>
@@ -205,22 +205,22 @@ function ProjectCard({
           {/* Title */}
           <div>
             <h2
-              className="text-4xl md:text-5xl font-bold tracking-tighter text-[#E5E7EB] leading-none mb-3"
+              className="text-4xl md:text-5xl font-bold tracking-tighter text-foreground leading-none mb-3"
             >
               <span style={{ color: project.color }}>{project.title}</span>
             </h2>
-            <p className="text-[#9CA3AF] font-light text-lg">{project.subtitle}</p>
+            <p className="text-muted-foreground font-light text-lg">{project.subtitle}</p>
           </div>
 
           {/* Description */}
-          <p className="text-[#9CA3AF] leading-relaxed">{project.description}</p>
+          <p className="text-muted-foreground leading-relaxed">{project.description}</p>
 
           {/* Tech Stack */}
           <div className="flex flex-wrap gap-2">
             {project.tech.map((t) => (
               <span
                 key={t}
-                className="px-3 py-1 rounded-md text-xs font-mono text-[#9CA3AF] border border-[#2D2D44]/60 bg-[#0A0A0F]/60"
+                className="px-3 py-1 rounded-md text-xs font-mono text-muted-foreground border border-border/60 bg-background/60"
               >
                 {t}
               </span>
@@ -230,7 +230,7 @@ function ProjectCard({
           {/* Feature List */}
           <div className="grid grid-cols-2 gap-2">
             {project.extendedTech.map((f) => (
-              <div key={f} className="flex items-center gap-2 text-sm text-[#9CA3AF]">
+              <div key={f} className="flex items-center gap-2 text-sm text-muted-foreground">
                 <div
                   className="h-1.5 w-1.5 rounded-full flex-shrink-0"
                   style={{ backgroundColor: project.color }}
@@ -248,7 +248,7 @@ function ProjectCard({
                   href={project.links.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm text-[#9CA3AF] hover:text-[#E5E7EB] transition-colors group/link"
+                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors group/link"
                 >
                   <Github className="h-4 w-4" />
                   <span>View Source</span>

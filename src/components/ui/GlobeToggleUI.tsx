@@ -2,50 +2,45 @@
 
 import { useStore } from "@nanostores/react";
 import { useState } from "react";
-import { $backgroundId, type BackgroundId } from "@/store/background";
+import { $globeId, type GlobeId } from "@/store/globe";
 
-const backgrounds: { id: BackgroundId; label: string; emoji: string }[] = [
-  { id: "beams", label: "Beams", emoji: "✦" },
-  { id: "hexagon", label: "Hexagon", emoji: "⬡" },
-  { id: "novatrix", label: "Novatrix", emoji: "◈" },
-  { id: "grainient", label: "Grainient", emoji: "◉" },
-  { id: "aurora", label: "Aurora", emoji: "🌌" },
-  { id: "react-beams", label: "Beams 3D", emoji: "⟨⟩" },
-  { id: "darkveil", label: "Dark Veil", emoji: "◫" },
+const globes: { id: GlobeId; label: string; emoji: string }[] = [
+  { id: "dotted", label: "Wireframe", emoji: "🕸️" },
+  { id: "realistic", label: "Realistic", emoji: "🌍" },
 ];
 
-export function BackgroundToggleUI() {
-  const active = useStore($backgroundId);
+export function GlobeToggleUI() {
+  const active = useStore($globeId);
   const [open, setOpen] = useState(false);
 
-  const select = (id: BackgroundId) => {
-    $backgroundId.set(id);
+  const select = (id: GlobeId) => {
+    $globeId.set(id);
     setOpen(false);
   };
 
-  const current = backgrounds.find((b) => b.id === active)!;
+  const current = globes.find((g) => g.id === active)!;
 
   return (
     <div
-      className="fixed bottom-10 left-10 z-50 flex flex-col items-start gap-3"
+      className="fixed bottom-10 right-10 z-60 flex flex-col items-end gap-3"
       style={{ pointerEvents: "all" }}
     >
       {/* Options popup */}
       {open && (
         <div className="flex flex-col gap-1.5 rounded-2xl border border-border bg-card/60 p-2.5 backdrop-blur-xl">
-          {backgrounds.map((bg) => (
+          {globes.map((globe) => (
             <button
-              key={bg.id}
-              onClick={() => select(bg.id)}
-              title={bg.label}
+              key={globe.id}
+              onClick={() => select(globe.id)}
+              title={globe.label}
               className={`flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-medium transition-all duration-200 ${
-                active === bg.id
-                  ? "bg-primary text-primary-foreground shadow-[0_0_12px_var(--color-accent-primary)]"
-                  : "text-muted-foreground hover:bg-white/10 hover:text-foreground"
+                active === globe.id
+                  ? "bg-primary text-white shadow-[0_0_12px_var(--color-accent-primary)]"
+                  : "text-white/60 hover:bg-white/10 hover:text-white"
               }`}
             >
-              <span className="text-base leading-none">{bg.emoji}</span>
-              {bg.label}
+              <span className="text-base leading-none">{globe.emoji}</span>
+              {globe.label}
             </button>
           ))}
         </div>
@@ -54,8 +49,8 @@ export function BackgroundToggleUI() {
       {/* Main toggle button */}
       <button
         onClick={() => setOpen((v) => !v)}
-        title="Change background"
-        aria-label="Toggle background style"
+        title="Change globe style"
+        aria-label="Toggle globe style"
         className="flex h-11 items-center gap-2 rounded-full border border-border bg-background/50 px-4.5 text-xs font-medium text-foreground/70 backdrop-blur-xl transition-all duration-200 hover:border-primary/50 hover:text-foreground hover:shadow-[0_0_16px_var(--color-accent-primary)] active:scale-95"
       >
         <span className="text-sm leading-none">{current.emoji}</span>

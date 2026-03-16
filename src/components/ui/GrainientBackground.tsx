@@ -144,9 +144,9 @@ export function GrainientBackground({
   centerX = 0.0,
   centerY = 0.0,
   zoom = 0.9,
-  color1 = "#C084FC", // Purple Mist
-  color2 = "#7C3AED", // Nebula Purple
-  color3 = "#0A0A0F", // Deep Space Black
+  color1 = "var(--color-accent-glow)",
+  color2 = "var(--color-primary)",
+  color3 = "var(--color-background-primary)",
   className,
 }: GrainientBackgroundProps) {
   const containerRef = useRef<HTMLDivElement>(null);

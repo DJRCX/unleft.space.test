@@ -33,7 +33,7 @@ export default function HeroContent() {
           variants={container}
           initial="hidden"
           animate="visible"
-          className="mb-6 text-5xl font-bold tracking-tight text-[#E5E7EB] md:text-7xl lg:text-8xl"
+          className="mb-6 text-5xl font-bold tracking-tight text-foreground md:text-7xl lg:text-8xl"
           style={{ lineHeight: 1.1, fontFamily: "'Gupter', serif" }}
         >
           <div className="flex flex-wrap justify-center gap-x-[0.25em] overflow-hidden pb-1">
@@ -48,7 +48,7 @@ export default function HeroContent() {
               <motion.span
                 key={i}
                 variants={word}
-                className="inline-block text-[#7C3AED]"
+                className="inline-block text-primary"
               >
                 {w}
               </motion.span>
@@ -60,7 +60,7 @@ export default function HeroContent() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.8 }}
-          className="mb-10 max-w-2xl text-lg leading-relaxed text-[#9CA3AF] md:text-xl"
+          className="mb-10 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl"
         >
           We combine the creativity of a game studio with the precision of
           enterprise software engineering. Our mission is to empower businesses
@@ -85,7 +85,7 @@ export default function HeroContent() {
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
             <HoverButton
               onClick={() => (window.location.href = "/projects")}
-              className="inline-flex items-center [--circle-start:#C084FC] [--circle-end:#7B2CBF] bg-[#7B2CBF]/10 text-white border border-[#C084FC]/30 hover:bg-[#7B2CBF]/20 shadow-[0_0_20px_rgba(124,58,237,0.3)]"
+              className="inline-flex items-center [--circle-start:var(--color-accent-glow)] [--circle-end:var(--color-accent-secondary)] bg-primary/10 text-white border border-ring/30 hover:bg-primary/20 shadow-[0_0_20px_var(--color-accent-primary)]"
             >
               Explore Our Work <MoveRight className="ml-2 h-4 w-4" />
             </HoverButton>

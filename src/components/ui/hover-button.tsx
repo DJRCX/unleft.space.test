@@ -93,13 +93,13 @@ const HoverButton = React.forwardRef<HTMLElement, HoverButtonProps>(
     const sharedClasses = cn(
       "relative isolate px-8 py-3 rounded-3xl group",
       "text-foreground font-medium text-base leading-6",
-      "backdrop-blur-lg bg-[rgba(43,55,80,0.1)]",
+      "backdrop-blur-lg bg-card/10",
       "cursor-pointer overflow-hidden",
       "flex items-center justify-center gap-2 transition-all duration-300",
       "before:content-[''] before:absolute before:inset-0",
       "before:rounded-[inherit] before:pointer-events-none",
       "before:z-[1]",
-      "before:shadow-[inset_0_0_0_1px_rgba(170,202,255,0.2),inset_0_0_16px_0_rgba(170,202,255,0.1),inset_0_-3px_12px_0_rgba(170,202,255,0.15),0_1px_3px_0_rgba(0,0,0,0.50),0_4px_12px_0_rgba(0,0,0,0.45)]",
+      "before:shadow-[inset_0_0_0_1px_var(--color-border-subtle),inset_0_0_16px_0_var(--color-accent-glow)/10,inset_0_-3px_12px_0_var(--color-accent-glow)/15,0_1px_3px_0_rgba(0,0,0,0.50),0_4px_12px_0_rgba(0,0,0,0.45)]",
       "before:mix-blend-multiply before:transition-transform before:duration-300",
       "active:scale-[0.98] active:before:scale-[0.975]",
       disabled && "opacity-50 cursor-not-allowed pointer-events-none",
@@ -107,8 +107,8 @@ const HoverButton = React.forwardRef<HTMLElement, HoverButtonProps>(
     )
 
     const sharedStyle = {
-      "--circle-start": "var(--tw-gradient-from, #a0d9f8)",
-      "--circle-end": "var(--tw-gradient-to, #3a5bbf)",
+      "--circle-start": "var(--color-accent-glow)",
+      "--circle-end": "var(--color-accent-primary)",
       ...(props.style as React.CSSProperties),
     } as React.CSSProperties
 

@@ -36,7 +36,7 @@ export function ContactCard({
 	return (
 		<div
 			className={cn(
-				'bg-[#0A0A0F]/40 border border-[#2D2D44] relative grid h-full w-full shadow-2xl lg:grid-cols-12 rounded-3xl backdrop-blur-sm overflow-visible',
+				'bg-background/40 border border-border relative grid h-full w-full shadow-2xl lg:grid-cols-12 rounded-3xl backdrop-blur-sm overflow-visible',
 				className,
 			)}
 			{...props}
@@ -64,7 +64,7 @@ export function ContactCard({
 			</div>
 			<div
 				className={cn(
-					'bg-[#1A1A2E]/20 flex h-full w-full items-center border-t border-[#2D2D44] p-6 lg:col-span-9 md:border-t-0 md:border-l',
+					'bg-card/20 flex h-full w-full items-center border-t border-border p-6 lg:col-span-9 md:border-t-0 md:border-l',
 					formSectionClassName,
 				)}
 			>
