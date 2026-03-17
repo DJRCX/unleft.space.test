@@ -163,6 +163,28 @@
   --color-border-subtle: #2d3139;
 }
 
+:root.theme-cyan {
+  --background: #050a0a;
+  --foreground: #f0fcfc;
+  --card: #0f1717;
+  --primary: #00ffff;
+  --secondary: #00ced1;
+  --muted: #5f9ea0;
+  --accent: #00ffff;
+  --border: #1a2b2b;
+  --input: #0f1717;
+  --ring: #00ffff;
+
+  /* Custom Brand Tokens */
+  --color-background-primary: #050a0a;
+  --color-background-secondary: #0f1717;
+  --color-accent-primary: #00ffff;
+  --color-accent-secondary: #00ced1;
+  --color-accent-glow: rgba(0, 255, 255, 0.25);
+  --color-accent-highlight: #ffffff;
+  --color-border-subtle: #1a2b2b;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

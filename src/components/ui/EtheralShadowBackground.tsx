@@ -113,7 +113,14 @@ export function EtheralShadowBackground({
         }}
       >
         {animationEnabled && (
-          <svg style={{ position: "absolute", width: 0, height: 0, pointerEvents: "none" }}>
+          <svg
+            style={{
+              position: "absolute",
+              width: 0,
+              height: 0,
+              pointerEvents: "none",
+            }}
+          >
             <defs>
               <filter id={id}>
                 <feTurbulence
@@ -156,8 +163,8 @@ export function EtheralShadowBackground({
             position: "absolute",
             inset: 0,
             backgroundColor: themeColor,
-            maskImage: `url('https://framerusercontent.com/images/ceBGguIpUU8luwByxuQz79t7To.png')`,
-            WebkitMaskImage: `url('https://framerusercontent.com/images/ceBGguIpUU8luwByxuQz79t7To.png')`,
+            maskImage: `url('/assets/images/shadow-mask.png')`,
+            WebkitMaskImage: `url('/assets/images/shadow-mask.png')`,
             maskSize: sizing === "stretch" ? "100% 100%" : "cover",
             maskRepeat: "no-repeat",
             maskPosition: "center",
@@ -171,7 +178,7 @@ export function EtheralShadowBackground({
         <div
           className="pointer-events-none absolute inset-0"
           style={{
-            backgroundImage: `url("https://framerusercontent.com/images/g0QcWrxr87K0ufOxIUFBakwYA8.png")`,
+            backgroundImage: `url("/assets/images/noise.png")`,
             backgroundSize: `${noise.scale * 200}px`,
             backgroundRepeat: "repeat",
             opacity: noise.opacity / 2,
