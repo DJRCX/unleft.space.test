@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { Color, Mesh, Program, Renderer, Triangle } from "ogl";
 import { useStore } from "@nanostores/react";
+import { cn } from "@/lib/utils";
 import { $themeId } from "@/store/theme";
 
 const vertexShader = `
@@ -156,7 +157,7 @@ export function NovatrixBackground({
   return (
     <div
       ref={ctnDom}
-      className={`bg-neutral-950 ${className || ""}`}
+      className={cn("bg-background", className)}
     />
   );
 }

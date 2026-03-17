@@ -1,6 +1,6 @@
 import { atom } from 'nanostores';
 
-export type BackgroundId = 'beams' | 'hexagon' | 'novatrix' | 'grainient' | 'aurora' | 'react-beams' | 'darkveil';
+export type BackgroundId = 'beams' | 'hexagon' | 'novatrix' | 'grainient' | 'aurora' | 'react-beams' | 'darkveil' | 'etheralshadow';
 
 export const STORAGE_KEY = 'unleft-bg-choice';
 
@@ -8,7 +8,7 @@ export const STORAGE_KEY = 'unleft-bg-choice';
 const getInitialBackground = (): BackgroundId => {
   if (typeof window === 'undefined') return 'grainient';
   const stored = localStorage.getItem(STORAGE_KEY) as BackgroundId | null;
-  if (stored && ['beams', 'hexagon', 'novatrix', 'grainient', 'aurora', 'react-beams', 'darkveil'].includes(stored)) {
+  if (stored && ['beams', 'hexagon', 'novatrix', 'grainient', 'aurora', 'react-beams', 'darkveil', 'etheralshadow'].includes(stored)) {
     return stored;
   }
   return 'grainient';

@@ -12,6 +12,7 @@ const backgrounds: { id: BackgroundId; label: string; emoji: string }[] = [
   { id: "aurora", label: "Aurora", emoji: "🌌" },
   { id: "react-beams", label: "Beams 3D", emoji: "⟨⟩" },
   { id: "darkveil", label: "Dark Veil", emoji: "◫" },
+  { id: "etheralshadow", label: "Ethereal Shadow", emoji: "🌫️" },
 ];
 
 export function BackgroundToggleUI() {

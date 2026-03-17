@@ -9,6 +9,7 @@ import { GrainientBackground } from "@/components/ui/GrainientBackground";
 import { AuroraBackground } from "@/components/ui/AuroraBackground";
 import { ReactBeamsBackground } from "@/components/ui/ReactBeamsBackground";
 import { DarkVeilBackground } from "@/components/ui/DarkVeilBackground";
+import { EtheralShadowBackground } from "@/components/ui/EtheralShadowBackground";
 
 export function BackgroundLayer() {
   const active = useStore($backgroundId);
@@ -33,6 +34,8 @@ export function BackgroundLayer() {
       return <ReactBeamsBackground className={layerClass} />;
     case "darkveil":
       return <DarkVeilBackground className={layerClass} />;
+    case "etheralshadow":
+      return <EtheralShadowBackground className={layerClass} />;
     default:
       return <GrainientBackground className={layerClass} />;
   }

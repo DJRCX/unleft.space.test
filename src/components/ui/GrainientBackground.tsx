@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { Renderer, Program, Mesh, Triangle } from "ogl";
 import { useStore } from "@nanostores/react";
 import { $themeId } from "@/store/theme";
+import { cn } from "@/lib/utils";
 
 const parseColor = (color: string): [number, number, number] => {
   // Handle Hex
@@ -265,7 +266,7 @@ export function GrainientBackground({
   return (
     <div
       ref={containerRef}
-      className={`bg-neutral-950 ${className || ""}`}
+      className={cn("bg-background", className)}
     />
   );
 }
