@@ -141,6 +141,28 @@
   --color-border-subtle: #495057;
 }
 
+:root.theme-platinum {
+  --background: #0a0b0d;
+  --foreground: #ffffff;
+  --card: #161a1f;
+  --primary: #e2e8f0;
+  --secondary: #94a3b8;
+  --muted: #9ca3af;
+  --accent: #ffffff;
+  --border: #2d3139;
+  --input: #161a1f;
+  --ring: #ffffff;
+
+  /* Custom overrides for the custom tokens */
+  --color-background-primary: #0a0b0d;
+  --color-background-secondary: #161a1f;
+  --color-accent-primary: #ffffff;
+  --color-accent-secondary: #e2e8f0;
+  --color-accent-glow: rgba(226, 232, 240, 0.3);
+  --color-accent-highlight: #ffffff;
+  --color-border-subtle: #2d3139;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

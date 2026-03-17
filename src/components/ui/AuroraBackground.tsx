@@ -14,7 +14,7 @@ export function AuroraBackground({
   return (
     <div
       className={cn(
-        "bg-neutral-950 transition-bg",
+        "bg-background transition-colors duration-500",
         className
       )}
     >

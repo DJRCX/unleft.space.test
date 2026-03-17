@@ -124,8 +124,8 @@ const fullTitle = `${title} | Unleft`;
       // 2. FOUC prevention for Theme Toolkit
       const themeKey = 'unleft-theme-choice';
       const storedTheme = localStorage.getItem(themeKey);
-      if (storedTheme === 'silver') {
-        document.documentElement.classList.add('theme-silver');
+      if (storedTheme && storedTheme !== 'default') {
+        document.documentElement.classList.add('theme-' + storedTheme);
       }
     </script>
     <SplashScreen client:load transition:persist="splash" />

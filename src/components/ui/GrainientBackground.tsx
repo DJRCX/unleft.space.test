@@ -2,15 +2,39 @@
 
 import { useEffect, useRef } from "react";
 import { Renderer, Program, Mesh, Triangle } from "ogl";
+import { useStore } from "@nanostores/react";
+import { $themeId } from "@/store/theme";
 
-const hexToRgb = (hex: string): [number, number, number] => {
-  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  if (!result) return [1, 1, 1];
-  return [
-    parseInt(result[1], 16) / 255,
-    parseInt(result[2], 16) / 255,
-    parseInt(result[3], 16) / 255,
-  ];
+const parseColor = (color: string): [number, number, number] => {
+  // Handle Hex
+  if (color.startsWith('#')) {
+    const hex = color.replace('#', '');
+    const r = parseInt(hex.substring(0, 2), 16) / 255;
+    const g = parseInt(hex.substring(2, 4), 16) / 255;
+    const b = parseInt(hex.substring(4, 6), 16) / 255;
+    return [r, g, b];
+  }
+  
+  // Handle RGB/RGBA
+  const match = color.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*[\d.]+)?\)/);
+  if (match) {
+    return [
+      parseInt(match[1], 10) / 255,
+      parseInt(match[2], 10) / 255,
+      parseInt(match[3], 10) / 255,
+    ];
+  }
+
+  return [0, 0, 0];
+};
+
+const resolveColor = (color: string): string => {
+  if (typeof window === "undefined") return "#000000";
+  if (color.startsWith("var(")) {
+    const varName = color.slice(4, -1).trim();
+    return getComputedStyle(document.documentElement).getPropertyValue(varName).trim() || "#000000";
+  }
+  return color;
 };
 
 const vertex = `#version 300 es
@@ -150,6 +174,7 @@ export function GrainientBackground({
   className,
 }: GrainientBackgroundProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const themeId = useStore($themeId);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -194,9 +219,9 @@ export function GrainientBackground({
         uSaturation: { value: saturation },
         uCenterOffset: { value: new Float32Array([centerX, centerY]) },
         uZoom: { value: zoom },
-        uColor1: { value: new Float32Array(hexToRgb(color1)) },
-        uColor2: { value: new Float32Array(hexToRgb(color2)) },
-        uColor3: { value: new Float32Array(hexToRgb(color3)) },
+        uColor1: { value: new Float32Array(parseColor(resolveColor(color1))) },
+        uColor2: { value: new Float32Array(parseColor(resolveColor(color2))) },
+        uColor3: { value: new Float32Array(parseColor(resolveColor(color3))) },
       },
     });
 
@@ -234,7 +259,7 @@ export function GrainientBackground({
     timeSpeed, colorBalance, warpStrength, warpFrequency, warpSpeed,
     warpAmplitude, blendAngle, blendSoftness, rotationAmount, noiseScale,
     grainAmount, grainScale, grainAnimated, contrast, gamma, saturation,
-    centerX, centerY, zoom, color1, color2, color3,
+    centerX, centerY, zoom, color1, color2, color3, themeId,
   ]);
 
   return (

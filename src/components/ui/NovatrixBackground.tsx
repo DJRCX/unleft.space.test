@@ -2,6 +2,8 @@
 
 import { useEffect, useRef } from "react";
 import { Color, Mesh, Program, Renderer, Triangle } from "ogl";
+import { useStore } from "@nanostores/react";
+import { $themeId } from "@/store/theme";
 
 const vertexShader = `
 attribute vec2 uv;
@@ -63,6 +65,7 @@ export function NovatrixBackground({
 }: NovatrixBackgroundProps) {
   const ctnDom = useRef<HTMLDivElement>(null);
   const mousePos = useRef({ x: 0.5, y: 0.5 });
+  const themeId = useStore($themeId);
 
   useEffect(() => {
     if (!ctnDom.current) return;
@@ -70,13 +73,18 @@ export function NovatrixBackground({
     // Resolve color from theme if not provided
     let finalColor = color;
     if (!finalColor) {
-      const primaryHex = getComputedStyle(document.documentElement).getPropertyValue('--color-accent-primary').trim() || '#7C3AED';
-      // Simple hex to RGB [0-1] converter
-      const hex = primaryHex.replace('#', '');
-      const r = parseInt(hex.substring(0, 2), 16) / 255;
-      const g = parseInt(hex.substring(2, 4), 16) / 255;
-      const b = parseInt(hex.substring(4, 6), 16) / 255;
-      finalColor = [r, g, b];
+      const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--color-accent-primary').trim() || '#7C3AED';
+      
+      if (primaryColor.startsWith('#')) {
+        const hex = primaryColor.replace('#', '');
+        const r = parseInt(hex.substring(0, 2), 16) / 255;
+        const g = parseInt(hex.substring(2, 4), 16) / 255;
+        const b = parseInt(hex.substring(4, 6), 16) / 255;
+        finalColor = [r, g, b];
+      } else {
+        // Fallback or handle rgb/rgba if needed, but for now defaults to a neutral light color if not hex
+        finalColor = [0.9, 0.9, 0.9];
+      }
     }
 
     const ctn = ctnDom.current;
@@ -143,7 +151,7 @@ export function NovatrixBackground({
       try { ctn.removeChild(gl.canvas); } catch { /* ignore */ }
       gl.getExtension("WEBGL_lose_context")?.loseContext();
     };
-  }, [color, speed, amplitude, mouseReact]);
+  }, [color, speed, amplitude, mouseReact, themeId]);
 
   return (
     <div

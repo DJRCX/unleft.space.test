@@ -7,6 +7,7 @@ import { $themeId, type ThemeId } from "@/store/theme";
 const themes: { id: ThemeId; label: string; emoji: string }[] = [
   { id: "default", label: "Midnight", emoji: "🌌" },
   { id: "silver", label: "Silver", emoji: "⚙️" },
+  { id: "platinum", label: "Platinum", emoji: "💎" },
 ];
 
 export function ThemeToggleUI() {
