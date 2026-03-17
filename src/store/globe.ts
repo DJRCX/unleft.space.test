@@ -1,6 +1,6 @@
 import { atom } from 'nanostores';
 
-export type GlobeId = 'dotted' | 'realistic';
+export type GlobeId = 'dotted' | 'realistic' | 'none';
 
 export const GLOBE_STORAGE_KEY = 'unleft-globe-choice';
 
@@ -8,7 +8,7 @@ export const GLOBE_STORAGE_KEY = 'unleft-globe-choice';
 const getInitialGlobe = (): GlobeId => {
   if (typeof window === 'undefined') return 'dotted';
   const stored = localStorage.getItem(GLOBE_STORAGE_KEY) as GlobeId | null;
-  if (stored && ['dotted', 'realistic'].includes(stored)) {
+  if (stored && ['dotted', 'realistic', 'none'].includes(stored)) {
     return stored;
   }
   return 'dotted';

@@ -7,6 +7,7 @@ import { $globeId, type GlobeId } from "@/store/globe";
 const globes: { id: GlobeId; label: string; emoji: string }[] = [
   { id: "dotted", label: "Wireframe", emoji: "🕸️" },
   { id: "realistic", label: "Realistic", emoji: "🌍" },
+  { id: "none", label: "Off", emoji: "🚫" },
 ];
 
 export function GlobeToggleUI() {
