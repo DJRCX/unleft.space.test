@@ -1,7 +1,11 @@
 "use client";
 
 import React, { useRef, useId, useEffect } from "react";
-import { animate, useMotionValue, type AnimationPlaybackControls } from "framer-motion";
+import {
+  animate,
+  useMotionValue,
+  type AnimationPlaybackControls,
+} from "framer-motion";
 import { useStore } from "@nanostores/react";
 import { $themeId } from "@/store/theme";
 import { cn } from "@/lib/utils";
@@ -30,7 +34,7 @@ function mapRange(
   fromLow: number,
   fromHigh: number,
   toLow: number,
-  toHigh: number
+  toHigh: number,
 ): number {
   if (fromLow === fromHigh) return toLow;
   const percentage = (value - fromLow) / (fromHigh - fromLow);
@@ -52,21 +56,27 @@ export function EtheralShadowBackground({
 }: EtheralShadowBackgroundProps) {
   const id = useInstanceId();
   const themeId = useStore($themeId);
-  
+
   // Dynamic color based on theme if not explicitly provided
-  const themeColor = color || (
-    themeId === "platinum" ? "rgba(255, 255, 255, 0.4)" :
-    themeId === "silver" ? "rgba(173, 181, 189, 0.6)" :
-    "rgba(192, 132, 252, 0.4)" // Midnight Purple
-  );
+  const themeColor =
+    color ||
+    (themeId === "platinum"
+      ? "rgba(255, 255, 255, 0.4)"
+      : themeId === "silver"
+        ? "rgba(173, 181, 189, 0.6)"
+        : "rgba(192, 132, 252, 0.4)"); // Midnight Purple
 
   const animationEnabled = animation && animation.scale > 0;
   const feColorMatrixRef = useRef<SVGFEColorMatrixElement>(null);
   const hueRotateMotionValue = useMotionValue(180);
   const hueRotateAnimation = useRef<AnimationPlaybackControls | null>(null);
 
-  const displacementScale = animation ? mapRange(animation.scale, 1, 100, 20, 100) : 0;
-  const animationDuration = animation ? mapRange(animation.speed, 1, 100, 1000, 50) : 1;
+  const displacementScale = animation
+    ? mapRange(animation.scale, 1, 100, 20, 100)
+    : 0;
+  const animationDuration = animation
+    ? mapRange(animation.speed, 1, 100, 1000, 50)
+    : 1;
 
   useEffect(() => {
     if (feColorMatrixRef.current && animationEnabled) {
@@ -163,8 +173,8 @@ export function EtheralShadowBackground({
             position: "absolute",
             inset: 0,
             backgroundColor: themeColor,
-            maskImage: `url('/assets/images/shadow-mask.png')`,
-            WebkitMaskImage: `url('/assets/images/shadow-mask.png')`,
+            maskImage: `url('/assets/images/shadow-mask.webp')`,
+            WebkitMaskImage: `url('/assets/images/shadow-mask.webp')`,
             maskSize: sizing === "stretch" ? "100% 100%" : "cover",
             maskRepeat: "no-repeat",
             maskPosition: "center",
@@ -178,7 +188,7 @@ export function EtheralShadowBackground({
         <div
           className="pointer-events-none absolute inset-0"
           style={{
-            backgroundImage: `url("/assets/images/noise.png")`,
+            backgroundImage: `url("/assets/images/noise.webp")`,
             backgroundSize: `${noise.scale * 200}px`,
             backgroundRepeat: "repeat",
             opacity: noise.opacity / 2,
